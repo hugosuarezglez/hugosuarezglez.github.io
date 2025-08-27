@@ -44,8 +44,8 @@ I am a **data scientist** and **emerging artist from Galicia**, with experience 
 
 ## 📫 Contact
 - GitHub: [@hugosuarezglez](https://github.com/hugosuarezglez)  
-- LinkedIn: *(add your link if available)*  
-- Email: *(add if you want to make it public)*  
+- LinkedIn: *[linkedin.com/in/hugo-suarez-gonzalez](https://www.linkedin.com/in/hugo-su%C3%A1rez-gonz%C3%A1lez-341208130/)*  
+- Email: *albsgonz@hotmail.com*  
 
 ---
 
