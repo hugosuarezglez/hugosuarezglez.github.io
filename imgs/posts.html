@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Posts – Hugo Suárez González</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js"></script>
+</head>
+<body class="bg-white text-black dark:bg-gray-900 dark:text-gray-100">
+
+  <div class="flex max-w-5xl mx-auto">
+    <aside class="w-1/4 p-6 flex flex-col items-center border-r border-gray-200 dark:border-gray-700">
+      <img src="img/profile.jpg" class="w-32 h-32 rounded-full mb-4">
+      <h1 class="text-xl font-bold">Hugo Suárez González</h1>
+      <nav class="flex flex-col space-y-2 text-sm">
+        <a href="index.html">Home</a>
+        <a href="categories.html">Categories</a>
+        <a href="posts.html" class="font-bold">Posts</a>
+        <a href="resume.html">Resume</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </aside>
+
+    <main class="w-3/4 p-10 space-y-10">
+      <h2 class="text-2xl font-semibold">Posts</h2>
+      <div id="posts-container" class="space-y-8"></div>
+    </main>
+  </div>
+
+  <script>
+    const posts = ["posts/2025-08-01-first.md", "posts/2025-08-10-second.md"];
+
+    const converter = new showdown.Converter();
+    const container = document.getElementById("posts-container");
+
+    posts.forEach(url => {
+      fetch(url)
+        .then(res => res.text())
+        .then(md => {
+          const html = converter.makeHtml(md);
+          const div = document.createElement("div");
+          div.className = "prose dark:prose-invert border-b pb-6";
+          div.innerHTML = html;
+          container.appendChild(div);
+        });
+    });
+  </script>
+</body>
+</html>
