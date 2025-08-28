@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Geospatial AI Embeddings for Flood Prediction / Inteligencia artificial para anticipar inundaciones relámpago"
 date: 2025-08-28
 ---
