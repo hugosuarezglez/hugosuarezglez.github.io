@@ -1,216 +1,148 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="es" class="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio – Hugo Suárez González</title>
-<script src="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-<style>
-  .hidden { display: none; }
-</style>
-</head>
-<body class="bg-white text-black dark:bg-gray-900 dark:text-gray-100 transition-colors">
-
-<div class="flex max-w-7xl mx-auto">
-
-  <!-- Sidebar -->
-  <aside class="w-1/4 p-6 flex flex-col items-center border-r border-gray-200 dark:border-gray-700">
-    <img src="img/profile.jpg" alt="Hugo Suárez González" class="w-32 h-32 rounded-full mb-4">
-    <h1 class="text-xl font-bold">Hugo Suárez González</h1>
-    <p id="bio-text" class="text-gray-500 dark:text-gray-400 text-sm mb-6">Data Scientist & Artist</p>
-
-    <!-- Dark Mode Toggle -->
-    <button onclick="toggleDarkMode()" class="px-3 py-1 border rounded text-sm mb-4">🌙 / ☀️</button>
-
-    <!-- Language Toggle -->
-    <button onclick="toggleLanguage()" class="px-3 py-1 border rounded text-sm mb-6">EN / ES</button>
-
-    <!-- Menu -->
-    <nav class="flex flex-col space-y-2 text-sm w-full">
-      <a href="#home" onclick="showSection('home')">Home</a>
-      <a href="#categories" onclick="showSection('categories')">Categories</a>
-      <a href="#posts" onclick="showSection('posts')">Posts</a>
-      <a href="#resume" onclick="showSection('resume')">Resume</a>
-      <a href="#contact" onclick="showSection('contact')">Contact</a>
-    </nav>
-  </aside>
-
-  <!-- Main content -->
-  <main class="w-3/4 p-10 space-y-10">
-
-    <!-- Home / README -->
-    <section id="home" class="prose dark:prose-invert max-w-full">
-      <h1 data-en="Portfolio – Hugo Suárez González" data-es="Portfolio – Hugo Suárez González">Portfolio – Hugo Suárez González</h1>
-      <p data-en="Welcome to my portfolio!" data-es="Bienvenide a mi portfolio!">Welcome to my portfolio!</p>
-      <p data-en="I am a <strong>data scientist</strong> working on Artificial Intelligence applied to natural hazards and medical research. I am also an <strong>emerging artist from Galicia (Spain)</strong>."
-         data-es="Soy <strong>científico de datos</strong> y <strong>artista emergente en Galicia</strong>, con experiencia en:">I am a <strong>data scientist</strong>...</p>
-
-      <ul>
-        <li data-en="Artificial Intelligence applied to natural hazards, especially flood risk prediction."
-            data-es="Inteligencia Artificial aplicada a riesgos naturales, en especial la predicción de zonas de riesgo en inundaciones.">
-          Artificial Intelligence applied to natural hazards...
-        </li>
-        <li data-en="Machine Learning for classification and predictive models."
-            data-es="Machine Learning para clasificación y modelos predictivos.">
-          Machine Learning for classification...
-        </li>
-        <li data-en="Scientific dissemination and AI training."
-            data-es="Divulgación científica y formación en IA.">
-          Scientific dissemination...
-        </li>
-        <li data-en="Music and artistic projects, multi-instrumentalist and singer."
-            data-es="Música y proyectos artísticos, producción musical, multiinstrumentista, cantante.">
-          Music and artistic projects...
-        </li>
-      </ul>
-    </section>
-
-    <!-- Categories / Projects -->
-    <section id="categories" class="hidden space-y-6">
-      <h2 data-en="🚀 Projects" data-es="🚀 Proyectos">🚀 Projects</h2>
-      <ul class="list-disc pl-5 space-y-2">
-        <li>
-          <a href="https://github.com/ANFAIA/En-Peu">En Peu – AI for Flood Prediction</a><br>
-          <span data-en="Predictive model of flood depth in Paiporta, developed with machine learning as an alternative to traditional hydraulic models."
-                data-es="Modelo predictivo de lámina de agua en Paiporta con IA, como alternativa a los modelos hidráulicos tradicionales.">
-            Predictive model of flood depth...
-          </span>
-        </li>
-        <li>
-          <a href="https://github.com/hugosuarezglez/SVM_RCC">Kidney Tumor Subtype Classification with Machine Learning</a><br>
-          <span data-en="Master's thesis applying ML models (SVM, RF, GBM) to classify kidney tumor subtypes."
-                data-es="Trabajo de fin de máster: clasificación de subtipos de tumores renales con modelos de ML.">
-            Master's thesis applying ML models...
-          </span>
-        </li>
-      </ul>
-
-      <h2 data-en="📄 Papers" data-es="📄 Artículos">📄 Papers</h2>
-      <ul class="list-disc pl-5 space-y-2">
-        <li>
-          <a href="https://fundacionmatrix.es/un-modelo-de-inteligencia-artificial-anticipa-la-magnitud-de-las-inundaciones-en-paiporta/">
-            AI model anticipates the magnitude of floods in Paiporta (Fundación Matrix)
-          </a><br>
-          <span data-en="" data-es="Un modelo de IA anticipa la magnitud de las inundaciones en Paiporta."></span>
-        </li>
-        <li>
-          <a href="https://pubmed.ncbi.nlm.nih.gov/37103393/">Genomic and transcriptomic analysis of C-type lectins (Marine Drugs)</a><br>
-          <span data-en="" data-es="Análisis genómico y transcriptómico de lectinas tipo C."></span>
-        </li>
-      </ul>
-
-      <h2 data-en="🎶 Music" data-es="🎶 Música">🎶 Music</h2>
-      <ul class="list-disc pl-5">
-        <li><a href="https://www.youtube.com/channel/UCXuUF7yy-JMzUpsWXKgVkxA">YouTube Channel</a><br>
-          <span data-en="Acoustic guitar and voice. Own songs and covers."
-                data-es="Guitarra acústica y voz. Canciones propias y versiones."></span>
-        </li>
-      </ul>
-    </section>
-
-    <!-- Posts -->
-    <section id="posts" class="hidden space-y-6">
-      <h2>Posts</h2>
-      <div id="posts-container" class="space-y-6"></div>
-    </section>
-
-    <!-- Resume -->
-    <section id="resume" class="hidden">
-      <h2 data-en="Resume" data-es="Currículum">Resume</h2>
-      <p><a href="CV.pdf" target="_blank" class="underline">Download CV / Descargar CV</a></p>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="hidden">
-      <h2 data-en="Contact" data-es="Contacto">Contact</h2>
-      <ul class="list-disc pl-5 space-y-2">
-        <li>GitHub: <a href="https://github.com/hugosuarezglez">@hugosuarezglez</a></li>
-        <li>LinkedIn: <a href="https://www.linkedin.com/in/hugo-su%C3%A1rez-gonz%C3%A1lez-341208130/">LinkedIn</a></li>
-        <li>Email: <a href="mailto:albsgonz@hotmail.com">albsgonz@hotmail.com</a></li>
-      </ul>
-    </section>
-
-  </main>
-</div>
-
-<script>
-  // ===== Dark Mode =====
-  function toggleDarkMode() {
-    document.documentElement.classList.toggle('dark');
-    localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-  }
-  if(localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
-  else document.documentElement.classList.remove('dark');
-
-  // ===== Language Toggle =====
-  function toggleLanguage() {
-    const current = localStorage.getItem('lang') || 'en';
-    const next = current === 'en' ? 'es' : 'en';
-    localStorage.setItem('lang', next);
-    applyLanguage(next);
-  }
-
-  function applyLanguage(lang) {
-    document.querySelectorAll('[data-en]').forEach(el => {
-      el.textContent = el.getAttribute(`data-${lang}`);
-    });
-  }
-  applyLanguage(localStorage.getItem('lang') || 'en');
-
-  // ===== Sections Toggle =====
-  function showSection(section) {
-    ['home','categories','posts','resume','contact'].forEach(s=>{
-      document.getElementById(s).classList.add('hidden');
-    });
-    document.getElementById(section).classList.remove('hidden');
-  }
-  showSection('home');
-
-    // ===== Posts Array =====
-  const posts = [
-    {
-      title: "AlphaEarth Flood Prediction",
-      date: "2025-08-28",
-      content: `
-As part of my work with Asociación FARO para la Aceleración de la Inteligencia Artificial - ANFAIA, I’ve been exploring how the latest advances in AI can strengthen applied research.
-
-In the En Peu project at Fundación Matrix Investigación y Desarrollo Sostenible, I used geospatial embeddings developed by Alpha Earth Foundations (Google DeepMind) to improve predictive models of floodwater depth based on territorial and environmental data.
-
-What’s remarkable is that even by using only Alpha Earth’s embeddings, the models already reach very strong performance, which is extremely helpful for developing projects like this one with real social impact.
-
-📊 Results with embeddings integration:
- 𝗚𝗿𝗮𝗱𝗶𝗲𝗻𝘁 𝗕𝗼𝗼𝘀𝘁𝗶𝗻𝗴 𝗠𝗮𝗰𝗵𝗶𝗻𝗲 (𝗚𝗕𝗠) → RMSE: 0.2185 | R²: 0.8872
- 𝗥𝗮𝗻𝗱𝗼𝗺 𝗙𝗼𝗿𝗲𝘀𝘁 (𝗥𝗙) → RMSE: 0.1219 | R²: 0.9649
-
-You can find the open-source implementation here:
- 🔗 https://lnkd.in/d54jNUgU
-`
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio – Hugo Suárez González</title>
+  <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.1/dist/showdown.min.js"></script>
+  <script>
+    // Función para cambiar el idioma
+    function changeLanguage(lang) {
+      const elements = document.querySelectorAll('[data-lang]');
+      elements.forEach(el => {
+        el.style.display = el.getAttribute('data-lang') === lang ? 'block' : 'none';
+      });
     }
-    // Puedes añadir más posts aquí siguiendo el mismo formato
-  ];
 
-  // ===== Render Posts =====
-  function renderPosts() {
-    const container = document.getElementById('posts-container');
-    container.innerHTML = '';
-    // Ordenar por fecha descendente
-    posts.sort((a,b) => new Date(b.date) - new Date(a.date));
-    posts.forEach(post => {
-      const postEl = document.createElement('div');
-      postEl.classList.add('border-b', 'pb-4');
-      const mdConverter = new showdown.Converter();
-      postEl.innerHTML = `
-        <h3 class="font-bold text-lg">${post.title}</h3>
-        <small class="text-gray-500 dark:text-gray-400">${post.date}</small>
-        <div class="mt-2 prose dark:prose-invert">${mdConverter.makeHtml(post.content)}</div>
-      `;
-      container.appendChild(postEl);
+    // Función para alternar el modo oscuro
+    function toggleDarkMode() {
+      const currentMode = localStorage.getItem('darkMode');
+      const newMode = currentMode === 'enabled' ? 'disabled' : 'enabled';
+      localStorage.setItem('darkMode', newMode);
+      document.documentElement.classList.toggle('dark', newMode === 'enabled');
+    }
+
+    // Aplicar el modo oscuro al cargar la página
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedMode = localStorage.getItem('darkMode');
+      if (savedMode === 'enabled') {
+        document.documentElement.classList.add('dark');
+      }
     });
-  }
+  </script>
+  <style>
+    /* Estilos personalizados */
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    .dark body {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+    header {
+      background-color: #333;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    .container {
+      width: 90%;
+      margin: 0 auto;
+      padding: 2rem 0;
+    }
+    .section {
+      margin-bottom: 2rem;
+    }
+    .section h2 {
+      border-bottom: 2px solid #333;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #333;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Portfolio – Hugo Suárez González</h1>
+    <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    <button onclick="changeLanguage('es')">Español</button>
+    <button onclick="changeLanguage('en')">English</button>
+  </header>
 
-  renderPosts();
-</script>
+  <div class="container">
+    <!-- Sección de Introducción -->
+    <div class="section" data-lang="es">
+      <h2>Bienvenide a mi portfolio</h2>
+      <p>Soy <strong>científico de datos</strong> y <strong>artista emergente en Galicia</strong>, con experiencia en:</p>
+      <ul>
+        <li>Inteligencia Artificial aplicada a riesgos naturales, en especial la predicción de zonas de riesgo en inundaciones.</li>
+        <li>Machine Learning para clasificación y modelos predictivos.</li>
+        <li>Divulgación científica y formación en IA.</li>
+        <li>Música y proyectos artísticos, producción musical, multiinstrumentista, cantante.</li>
+      </ul>
+    </div>
 
+    <div class="section" data-lang="en" style="display:none;">
+      <h2>Welcome to my portfolio</h2>
+      <p>I am a <strong>data scientist</strong> and <strong>emerging artist from Galicia</strong>, with experience in:</p>
+      <ul>
+        <li>Artificial Intelligence applied to natural hazards, especially flood risk prediction.</li>
+        <li>Machine Learning for classification and predictive modeling.</li>
+        <li>Scientific outreach and AI training.</li>
+        <li>Music and artistic projects, music production, multi-instrumentalist, singer.</li>
+      </ul>
+    </div>
+
+    <!-- Sección de Proyectos -->
+    <div class="section" data-lang="es">
+      <h2>Proyectos</h2>
+      <ul>
+        <li><a href="https://github.com/ANFAIA/En-Peu">En Peu – IA para la predicción de inundaciones</a></li>
+        <li><a href="https://github.com/hugosuarezglez/SVM_RCC">Clasificación de subtipos de tumores renales con Machine Learning</a></li>
+      </ul>
+    </div>
+
+    <div class="section" data-lang="en" style="display:none;">
+      <h2>Projects</h2>
+      <ul>
+        <li><a href="https://github.com/ANFAIA/En-Peu">En Peu – AI for Flood Prediction</a></li>
+        <li><a href="https://github.com/hugosuarezglez/SVM_RCC">Kidney Tumor Subtype Classification with Machine Learning</a></li>
+      </ul>
+    </div>
+
+    <!-- Sección de Contacto -->
+    <div class="section" data-lang="es">
+      <h2>Contacto</h2>
+      <p>GitHub: <a href="https://github.com/hugosuarezglez">@hugosuarezglez</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/hugo-su%C3%A1rez-gonz%C3%A1lez-341208130/">Perfil de LinkedIn</a></p>
+      <p>Email: <a href="mailto:albsgonz@hotmail.com">albsgonz@hotmail.com</a></p>
+    </div>
+
+    <div class="section" data-lang="en" style="display:none;">
+      <h2>Contact</h2>
+      <p>GitHub: <a href="https://github.com/hugosuarezglez">@hugosuarezglez</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/hugo-su%C3%A1rez-gonz%C3%A1lez-341208130/">LinkedIn Profile</a></p>
+      <p>Email: <a href="mailto:albsgonz@hotmail.com">albsgonz@hotmail.com</a></p>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Hugo Suárez González</p>
+  </footer>
+
+  <script>
+    // Inicializar el idioma por defecto
+    changeLanguage('es');
+  </script>
 </body>
 </html>
