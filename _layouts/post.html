@@ -29,56 +29,6 @@ layout: default
   </style>
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300">
-  <div class="flex min-h-screen max-w-7xl mx-auto flex-col px-4 py-8 md:flex-row md:space-x-8">
-    
-    <header class="flex flex-col md:w-1/3 mb-12 md:mb-0">
-      <div class="flex flex-col items-center">
-        <a href="/">
-          <img src="/assets/img/foto.jpeg" alt="Mi foto" class="w-32 h-32 rounded-full border-4 border-slate-300 dark:border-slate-700 hover:scale-105 transition-transform duration-300">
-        </a>
-        <h1 class="text-3xl font-bold mt-4">Hugo Suárez González</h1>
-        <p class="text-slate-600 dark:text-slate-300 mt-2 text-center" data-en="Passionate about urban and environmental data science." data-es="Apasionado de la ciencia de datos urbana y ambiental.">Apasionado de la ciencia de datos urbana y ambiental.</p>
-      </div>
-
-      <nav class="mt-8 flex flex-wrap justify-center md:flex-col md:mt-12 md:space-y-4">
-        <a id="nav-home" href="/" class="nav-link mx-2 my-1 md:mx-0 md:my-0 text-slate-600 dark:text-slate-300 hover:text-sky-600 transition-colors duration-200" data-en="Home" data-es="Inicio">Inicio</a>
-        <a id="nav-proyectos" href="/proyectos.html" class="nav-link mx-2 my-1 md:mx-0 md:my-0 text-slate-600 dark:text-slate-300 hover:text-sky-600 transition-colors duration-200" data-en="Projects" data-es="Proyectos">Proyectos</a>
-        <a id="nav-blog" href="/blog.html" class="nav-link mx-2 my-1 md:mx-0 md:my-0 text-slate-600 dark:text-slate-300 hover:text-sky-600 transition-colors duration-200" data-en="Blog" data-es="Blog">Blog</a>
-        <a id="nav-contacto" href="/contacto.html" class="nav-link mx-2 my-1 md:mx-0 md:my-0 text-slate-600 dark:text-slate-300 hover:text-sky-600 transition-colors duration-200" data-en="Contact" data-es="Contacto">Contacto</a>
-      </nav>
-
-      <div class="flex justify-center mt-6">
-        <button id="btn-es" class="px-2 py-1 rounded-full text-xs font-semibold bg-sky-600 text-white hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors duration-200 mr-2" onclick="setLang('es')">ES</button>
-        <button id="btn-en" class="px-2 py-1 rounded-full text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors duration-200" onclick="setLang('en')">EN</button>
-      </div>
-    </header>
-
-    <main class="md:w-2/3">
-      {{ content }}
-    </main>
-  </div>
-
-  <script>
-    function setLang(lang) {
-      document.getElementById('btn-es').classList.remove('bg-sky-600', 'text-white');
-      document.getElementById('btn-en').classList.remove('bg-sky-600', 'text-white');
-      document.getElementById('btn-es').classList.add('hover:bg-slate-100', 'dark:hover:bg-slate-700');
-      document.getElementById('btn-en').classList.add('hover:bg-slate-100', 'dark:hover:bg-slate-700');
-
-      document.getElementById('btn-' + lang).classList.add('bg-sky-600', 'text-white');
-      document.getElementById('btn-' + lang).classList.remove('hover:bg-slate-100', 'dark:hover:bg-slate-700');
-
-      document.querySelectorAll('[data-' + lang + ']').forEach(element => {
-        element.innerHTML = element.getAttribute('data-' + lang);
-      });
-
-      document.documentElement.lang = lang;
-    }
-  </script>
-</body>
-
-
-  <body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300">
   <div class="flex min-h-screen max-w-7xl mx-auto">
 
     <!-- Sidebar -->
@@ -123,7 +73,7 @@ layout: default
     </aside>
 
     <!-- Contenido principal -->
-    <main class="md:w-2/3">
+        <main class="md:w-2/3">
       {{ content }}
     </main>
   </div>
