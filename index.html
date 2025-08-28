@@ -1,148 +1,410 @@
-<!DOCTYPE html>
-<html lang="es" class="dark">
+<!doctype html>
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio – Hugo Suárez González</title>
-  <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.1/dist/showdown.min.js"></script>
-  <script>
-    // Función para cambiar el idioma
-    function changeLanguage(lang) {
-      const elements = document.querySelectorAll('[data-lang]');
-      elements.forEach(el => {
-        el.style.display = el.getAttribute('data-lang') === lang ? 'block' : 'none';
-      });
-    }
-
-    // Función para alternar el modo oscuro
-    function toggleDarkMode() {
-      const currentMode = localStorage.getItem('darkMode');
-      const newMode = currentMode === 'enabled' ? 'disabled' : 'enabled';
-      localStorage.setItem('darkMode', newMode);
-      document.documentElement.classList.toggle('dark', newMode === 'enabled');
-    }
-
-    // Aplicar el modo oscuro al cargar la página
-    window.addEventListener('DOMContentLoaded', () => {
-      const savedMode = localStorage.getItem('darkMode');
-      if (savedMode === 'enabled') {
-        document.documentElement.classList.add('dark');
-      }
-    });
-  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>En Peu · Portfolio — hugosuarezglez</title>
+  <meta name="description" content="Portfolio personal del proyecto En Peu: IA para predecir cota de inundación, documentación, resultados y hoja de ruta." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* Estilos personalizados */
-    body {
-      font-family: 'Inter', sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-      color: #333;
-    }
-    .dark body {
-      background-color: #121212;
-      color: #e0e0e0;
-    }
-    header {
-      background-color: #333;
-      color: white;
-      padding: 1rem;
-      text-align: center;
-    }
-    .container {
-      width: 90%;
-      margin: 0 auto;
-      padding: 2rem 0;
-    }
-    .section {
-      margin-bottom: 2rem;
-    }
-    .section h2 {
-      border-bottom: 2px solid #333;
-      padding-bottom: 0.5rem;
-      margin-bottom: 1rem;
-    }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background-color: #333;
-      color: white;
-    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; }
+    .prose h3 { scroll-margin-top: 96px; }
+    .chip { @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-slate-700; }
+    .kbd { @apply rounded-md border border-slate-300/70 px-1.5 py-0.5 text-[11px] font-mono bg-white shadow-sm; }
   </style>
 </head>
-<body>
-  <header>
-    <h1>Portfolio – Hugo Suárez González</h1>
-    <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
-    <button onclick="changeLanguage('es')">Español</button>
-    <button onclick="changeLanguage('en')">English</button>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+  <!-- Nav -->
+  <header class="sticky top-0 z-50 backdrop-blur bg-white/70 dark:bg-slate-950/70 border-b border-slate-200/60 dark:border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="flex h-16 items-center justify-between">
+        <a href="#top" class="text-slate-900 dark:text-white font-extrabold tracking-tight text-lg">En&nbsp;Peu<span class="text-sky-600">·</span>hugosuarezglez</a>
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="#acerca" class="hover:text-sky-600">Acerca</a>
+          <a href="#variables" class="hover:text-sky-600">Datos</a>
+          <a href="#metodo" class="hover:text-sky-600">Método</a>
+          <a href="#resultados" class="hover:text-sky-600">Resultados</a>
+          <a href="#hrm" class="hover:text-sky-600">HRM</a>
+          <a href="#alphaearth" class="hover:text-sky-600">AlphaEarth</a>
+          <a href="#timeline" class="hover:text-sky-600">Timeline</a>
+          <a href="#recursos" class="hover:text-sky-600">Recursos</a>
+        </nav>
+        <div class="flex items-center gap-2">
+          <a id="gh" href="#" target="_blank" rel="noopener" class="hidden sm:inline-flex h-9 items-center rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-3 text-sm font-semibold shadow hover:opacity-90">Repositorio</a>
+          <button id="themeToggle" class="h-9 w-9 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800" title="Cambiar tema" aria-label="Cambiar tema">
+            <svg id="sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 hidden">
+              <path d="M12 2a1 1 0 011 1v2a1 1 0 11-2 0V3a1 1 0 011-1zm0 17a1 1 0 011 1v2a1 1 0 11-2 0v-2a1 1 0 011-1zM4.22 4.22a1 1 0 011.42 0L7 5.59a1 1 0 01-1.41 1.41L4.22 5.64a1 1 0 010-1.42zM17 16.59a1 1 0 011.41 0l1.36 1.36a1 1 0 01-1.41 1.41L17 18a1 1 0 010-1.41zM2 11a1 1 0 011-1h2a1 1 0 110 2H3a1 1 0 01-1-1zm17 0a1 1 0 011-1h2a1 1 0 110 2h-2a1 1 0 01-1-1zM4.22 18.36a1 1 0 010-1.42L5.59 15.6A1 1 0 017 17l-1.36 1.36a1 1 0 01-1.42 0zM18.36 4.22a1 1 0 010 1.42L17 7a1 1 0 01-1.41-1.41l1.36-1.36a1 1 0 011.41 0z"/>
+            </svg>
+            <svg id="moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+              <path d="M21.64 13a9 9 0 11-10.63-10A7 7 0 0021.64 13z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
   </header>
 
-  <div class="container">
-    <!-- Sección de Introducción -->
-    <div class="section" data-lang="es">
-      <h2>Bienvenide a mi portfolio</h2>
-      <p>Soy <strong>científico de datos</strong> y <strong>artista emergente en Galicia</strong>, con experiencia en:</p>
-      <ul>
-        <li>Inteligencia Artificial aplicada a riesgos naturales, en especial la predicción de zonas de riesgo en inundaciones.</li>
-        <li>Machine Learning para clasificación y modelos predictivos.</li>
-        <li>Divulgación científica y formación en IA.</li>
-        <li>Música y proyectos artísticos, producción musical, multiinstrumentista, cantante.</li>
-      </ul>
+  <!-- Hero -->
+  <section id="top" class="pt-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 grid lg:grid-cols-2 gap-10 items-center">
+      <div>
+        <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight tracking-tight">Hugo Suárez — <span class="text-sky-600">En&nbsp;Peu</span></h1>
+        <p class="mt-5 text-lg text-slate-600 dark:text-slate-300">Portfolio personal del proyecto de IA para predicción de <em>cota de inundación (PLA)</em> en entornos urbanos y periurbanos. Documenta desde mis inicios en la <strong>Fundación MAtriX</strong> hasta la <strong>beca ANFAIA</strong>.</p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="#resultados" class="inline-flex h-11 items-center rounded-xl bg-sky-600 text-white px-4 text-sm font-semibold shadow hover:bg-sky-700">Ver resultados</a>
+          <a href="#recursos" class="inline-flex h-11 items-center rounded-xl border border-slate-300 dark:border-slate-700 px-4 text-sm font-semibold hover:bg-slate-100 dark:hover:bg-slate-800">Recursos & docs</a>
+          <span class="chip">@hugosuarezglez</span>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-sky-50 to-slate-50 dark:from-sky-900/10 dark:to-slate-900/10 p-6 shadow-inner">
+          <ul class="grid grid-cols-2 gap-3 text-sm">
+            <li class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <p class="font-semibold">Mejor modelo</p>
+              <p class="text-slate-600 dark:text-slate-300">Random Forest</p>
+            </li>
+            <li class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <p class="font-semibold">Librerías</p>
+              <p class="text-slate-600 dark:text-slate-300">scikit‑learn, XGBoost, SciPy</p>
+            </li>
+            <li class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <p class="font-semibold">EDA</p>
+              <p class="text-slate-600 dark:text-slate-300">Boxplots, histos, outliers</p>
+            </li>
+            <li class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <p class="font-semibold">Explicabilidad</p>
+              <p class="text-slate-600 dark:text-slate-300">PDPs · Importancias</p>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="section" data-lang="en" style="display:none;">
-      <h2>Welcome to my portfolio</h2>
-      <p>I am a <strong>data scientist</strong> and <strong>emerging artist from Galicia</strong>, with experience in:</p>
-      <ul>
-        <li>Artificial Intelligence applied to natural hazards, especially flood risk prediction.</li>
-        <li>Machine Learning for classification and predictive modeling.</li>
-        <li>Scientific outreach and AI training.</li>
-        <li>Music and artistic projects, music production, multi-instrumentalist, singer.</li>
-      </ul>
+  <!-- Acerca -->
+  <section id="acerca" class="py-12 sm:py-16 border-t border-slate-200/70 dark:border-slate-800">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 prose prose-slate dark:prose-invert">
+      <h2>Acerca del proyecto</h2>
+      <p><strong>En&nbsp;Peu</strong> es una iniciativa de ciencia de datos aplicada a la gestión del riesgo de inundaciones. El objetivo es <em>predecir la cota de lámina de agua (PLA)</em> a partir de variables geoespaciales y urbanas, generar mapas interpretables y ofrecer una herramienta reproducible para ayuntamientos y ciudadanía.</p>
+      <p>Este portfolio recoge la documentación del repositorio, cuadernos, scripts, artículos divulgativos y notas técnicas desde mis inicios en la <strong>Fundación MAtriX</strong> hasta la <strong>beca ANFAIA</strong>, pasando por la investigación de modelos clásicos (RF/GBM/SVM) y propuestas más avanzadas como embeddings de <em>AlphaEarth</em> y un orquestador de tipo <em>HRM‑style</em>.</p>
     </div>
+  </section>
 
-    <!-- Sección de Proyectos -->
-    <div class="section" data-lang="es">
-      <h2>Proyectos</h2>
-      <ul>
-        <li><a href="https://github.com/ANFAIA/En-Peu">En Peu – IA para la predicción de inundaciones</a></li>
-        <li><a href="https://github.com/hugosuarezglez/SVM_RCC">Clasificación de subtipos de tumores renales con Machine Learning</a></li>
-      </ul>
+  <!-- Variables y datos -->
+  <section id="variables" class="py-12 sm:py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold">Datos & variables</h2>
+        <p class="text-slate-600 dark:text-slate-300 mt-2">Variables presentes en los CSV y su significado.</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="space-y-3 text-sm leading-6">
+          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <p><span class="chip">A</span> <strong>Altitud</strong>. Numérica: elevación s.n.m.</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <p><span class="chip">AC</span> <strong>Anchura de calles</strong>. Categórica → numérica por valor medio del rango.</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <p><span class="chip">B</span> <strong>Barranco</strong>. Binaria: 0 = cauce, 1 = no cauce.</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <p><span class="chip">CICCB</span> Curvatura del cauce · capacidad de acumulación. Numérica.</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <p><span class="chip">CIB</span> Capacidad de inundación del barranco por sección/situación. Numérica.</p>
+          </div>
+        </div>
+        <div class="space-y-3 text-sm leading-6">
+          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <p><span class="chip">CUS</span> <strong>Uso del suelo</strong>. Categórica: 1 Cultivos · 2 Edificios · 3 Suelo desnudo · 4 Zonas verdes · 5 Vial.</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <p><span class="chip">DBB</span> Distancia al borde del cauce (m). Numérica.</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <p><span class="chip">DOB</span> Distancia a obstáculos en el cauce (m). Numérica.</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <p><span class="chip">OC</span> <strong>Orientación calles</strong>. Categórica: 1 Oblicua · 2 Paralela · 3 Perpendicular · 4 Otras.</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <p><span class="chip">P</span> <strong>Pendiente</strong> (%). Numérica.</p>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="section" data-lang="en" style="display:none;">
-      <h2>Projects</h2>
-      <ul>
-        <li><a href="https://github.com/ANFAIA/En-Peu">En Peu – AI for Flood Prediction</a></li>
-        <li><a href="https://github.com/hugosuarezglez/SVM_RCC">Kidney Tumor Subtype Classification with Machine Learning</a></li>
-      </ul>
+  <!-- Método -->
+  <section id="metodo" class="py-12 sm:py-16 border-t border-slate-200/70 dark:border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-10 items-start">
+      <div class="prose prose-slate dark:prose-invert max-w-none">
+        <h2>Metodología y flujo de trabajo</h2>
+        <ol>
+          <li><strong>Ingesta y limpieza</strong>: combinación de CSV, control de faltantes, depuración de outliers.</li>
+          <li><strong>EDA</strong>: histogramas y boxplots; matriz de correlación para numéricas; <em>Cramér’s V</em> (cat↔cat) y <em>Kruskal‑Wallis</em> (cat↔num) sin asumir normalidad.</li>
+          <li><strong>Transformaciones</strong>: <code>MinMaxScaler</code> para numéricas y <code>OneHotEncoder</code> para categóricas.</li>
+          <li><strong>Partición</strong>: <code>train/test</code> con <code>scikit‑learn</code>.</li>
+          <li><strong>Modelado</strong>: <em>Random Forest</em>, <em>Gradient Boosting</em>, <em>SVM</em> y pruebas con <em>XGBoost</em>. Búsqueda de hiperparámetros.</li>
+          <li><strong>Evaluación</strong>: <span class="chip">R²</span> <span class="chip">RMSE</span> <span class="chip">MAE</span>. Gráficos comparativos y dispersión observado vs predicho.</li>
+          <li><strong>Mapas</strong>: PLA observada vs predicha y mapa de error absoluto. Imputación de altitud en cauces con <code>KDTree</code> (SciPy).</li>
+          <li><strong>Explicabilidad</strong>: <em>Partial Dependence Plots (PDPs)</em> para variables numéricas clave; importancias de variables.</li>
+          <li><strong>Dimensión espacial</strong> (en exploración): validación cruzada espacial, coordenadas XY, promedios de vecinos, flujos.</li>
+        </ol>
+        <p>El repositorio está organizado por scripts (p. ej. <code>05-transformacion_datos</code>, <code>06-train_test_and_models</code>) y documentación (<code>README.md</code>, <code>updates.md</code>).</p>
+      </div>
+      <div class="space-y-4">
+        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <p class="font-semibold mb-2">Conversaciones integradas</p>
+          <ul class="text-sm leading-6 list-disc pl-5">
+            <li><em>Leer y combinar CSV</em>: pipeline de unión y validación.</li>
+            <li><em>AlphaEarth — explicación sencilla</em>: uso de embeddings satelitales (64D) para enriquecer el modelo.</li>
+            <li><em>Modelo de razonamiento jerárquico</em>: orquestación HRM‑style (planificador LLM + ejecutores Python).</li>
+            <li><em>Mensaje LinkedIn — Beca ANFAIA</em>: hitos personales e impacto social.</li>
+            <li><em>Modelos predictivos inundación</em>: RF/GBM/SVM, métricas, mapas.</li>
+            <li><em>Resumen IA inundaciones</em>: visión divulgativa para prensa.</li>
+          </ul>
+        </div>
+        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <p class="font-semibold mb-2">Stack técnico</p>
+          <p class="text-sm">Python, R, scikit‑learn, XGBoost, SciPy, NumPy, pandas, Matplotlib; GIS; Colab; Git/GitHub; VS Code.</p>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <!-- Sección de Contacto -->
-    <div class="section" data-lang="es">
-      <h2>Contacto</h2>
-      <p>GitHub: <a href="https://github.com/hugosuarezglez">@hugosuarezglez</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/hugo-su%C3%A1rez-gonz%C3%A1lez-341208130/">Perfil de LinkedIn</a></p>
-      <p>Email: <a href="mailto:albsgonz@hotmail.com">albsgonz@hotmail.com</a></p>
+  <!-- Resultados -->
+  <section id="resultados" class="py-12 sm:py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl sm:text-3xl font-bold">Resultados</h2>
+      <p class="mt-2 text-slate-600 dark:text-slate-300">Comparativa de modelos y visualizaciones clave. Sustituye los valores de ejemplo por los reales del repositorio.</p>
+      <div class="grid lg:grid-cols-3 gap-6 mt-6">
+        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <p class="font-semibold">Métricas (ejemplo)</p>
+          <ul class="text-sm mt-2 space-y-1">
+            <li>Random Forest — R²: <strong>0.82</strong> · RMSE: <strong>0.18</strong> · MAE: <strong>0.12</strong></li>
+            <li>GBM — R²: 0.79 · RMSE: 0.20 · MAE: 0.14</li>
+            <li>SVM — R²: 0.74 · RMSE: 0.23 · MAE: 0.17</li>
+          </ul>
+          <p class="text-xs text-slate-500 mt-2">*Reemplazar por cifras reales del último <code>06-*.ipynb</code>.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <p class="font-semibold">Gráficas</p>
+          <ul class="text-sm mt-2 list-disc pl-5">
+            <li>Dispersión: predicho vs observado</li>
+            <li>Comparativa R² / RMSE / MAE</li>
+            <li>PDPs de variables clave</li>
+          </ul>
+        </div>
+        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <p class="font-semibold">Mapas</p>
+          <ul class="text-sm mt-2 list-disc pl-5">
+            <li>PLA observada vs predicha (test)</li>
+            <li>Mapa de error absoluto</li>
+            <li>Gradiente de altitud en cauce (KDTree)</li>
+          </ul>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="section" data-lang="en" style="display:none;">
-      <h2>Contact</h2>
-      <p>GitHub: <a href="https://github.com/hugosuarezglez">@hugosuarezglez</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/hugo-su%C3%A1rez-gonz%C3%A1lez-341208130/">LinkedIn Profile</a></p>
-      <p>Email: <a href="mailto:albsgonz@hotmail.com">albsgonz@hotmail.com</a></p>
+  <!-- HRM -->
+  <section id="hrm" class="py-12 sm:py-16 border-t border-slate-200/70 dark:border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-10 items-start">
+      <div class="prose prose-slate dark:prose-invert max-w-none">
+        <h2>HRM‑style: planificador + ejecutores</h2>
+        <p>Implementación inspirada en el <em>Hierarchical Reasoning Model</em>: un <strong>planificador LLM</strong> decide pasos (geocodificar municipio → validar WGS84 → descargar embeddings AlphaEarth → construir dataset → entrenar/cargar modelo → predecir → mapear) y <strong>ejecutores Python/GIS</strong> realizan cada tarea.</p>
+        <h3>Ventajas</h3>
+        <ul>
+          <li>Flexibilidad y extensibilidad del pipeline</li>
+          <li>Reusabilidad para distintos municipios</li>
+          <li>Transparencia: el planificador explica acciones</li>
+        </ul>
+        <h3>Contras</h3>
+        <ul>
+          <li>Complejidad de despliegue (Ollama/Qwen, LangChain/LangGraph)</li>
+          <li>Overkill si el pipeline es fijo</li>
+          <li>No mejora per se la métrica predictiva</li>
+        </ul>
+      </div>
+      <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+        <p class="font-semibold mb-2">Opciones de arquitectura</p>
+        <ol class="text-sm list-decimal pl-5 space-y-1">
+          <li>Ollama + LangChain (recomendada: 100% OSS, portable)</li>
+          <li>LM Studio + Python (GUI sencilla)</li>
+          <li>Descarga automática HF + GitHub (1‑click setup)</li>
+          <li>Servidor propio (descartado por coste/mantenimiento)</li>
+        </ol>
+        <p class="text-xs text-slate-500 mt-3">Nota: este HRM‑style no es la arquitectura HRM del paper; replica la separación jerárquica con LLM + herramientas clásicas.</p>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <footer>
-    <p>&copy; 2025 Hugo Suárez González</p>
+  <!-- HRM del paper -->
+  <section id="hrm-paper" class="py-12 sm:py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-10 items-start">
+      <div class="prose prose-slate dark:prose-invert max-w-none">
+        <h2>HRM (paper): investigación aplicada</h2>
+        <p>Adaptación experimental del HRM original (dos RNN jerárquicas con parada adaptativa) a una tarea de <strong>regresión PLA</strong>. Requiere PyTorch + CUDA, datasets suficientes y ajustes de pérdidas/arquitectura. Objetivo: usar HRM como <em>predicto</em>r directo o como <em>extractor de features</em> para potenciar RF/GBM.</p>
+      </div>
+      <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+        <p class="font-semibold mb-2">Estado</p>
+        <ul class="text-sm list-disc pl-5">
+          <li>Prototipo en Colab (PyTorch puro). Rendimiento inicial inferior a RF/GBM.</li>
+          <li>Idea prometedora: <strong>HRM como extractor de representaciones</strong> + modelo tabular final.</li>
+          <li>Posible línea publicable a medio plazo.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- AlphaEarth -->
+  <section id="alphaearth" class="py-12 sm:py-16 border-t border-slate-200/70 dark:border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-10 items-start">
+      <div class="prose prose-slate dark:prose-invert max-w-none">
+        <h2>AlphaEarth: embeddings satelitales</h2>
+        <p>Dos vías exploradas: (1) descargar <em>embeddings</em> públicos (≈64D) y añadirlos como features al modelo; (2) entrenar un modelo propio tipo AlphaEarth para generar embeddings específicos de la zona. La prioridad es (1); (2) abre una vía de I+D.</p>
+        <p>Incidencias: descarga lenta y <em>missing</em> generalizado por incompatibilidad de coordenadas → pendiente de transformar a formato compatible y reintentar (<code>modelo_AlphaEarth.ipynb</code> en el repo).</p>
+      </div>
+      <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+        <p class="font-semibold mb-2">Integración prevista</p>
+        <ul class="text-sm list-disc pl-5">
+          <li>Pipeline: coords municipio → embeddings → concatenación con A, AC, B, ... P → entrenamiento/evaluación.</li>
+          <li>Validar sistema de referencia (WGS84) y tiles.</li>
+          <li>Comparar desempeño con/sin embeddings.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline / Diario -->
+  <section id="timeline" class="py-12 sm:py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl sm:text-3xl font-bold">Timeline del proyecto</h2>
+      <p class="mt-2 text-slate-600 dark:text-slate-300">Hitos desde Fundación MAtriX hasta la beca ANFAIA. Extraído de notas de Discord y del repositorio (<code>updates.md</code>).</p>
+      <div class="mt-6 space-y-4">
+        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <p class="font-semibold">Inicio y setup</p>
+          <ul class="text-sm list-disc pl-5">
+            <li>Familiarización con Git, GitHub y VS Code. Investigación de Ollama, Continue, Qwen y agentes locales.</li>
+            <li>Revisión de proyectos similares para orientar el enfoque.</li>
+          </ul>
+        </div>
+        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <p class="font-semibold">Datos, EDA y correlaciones</p>
+          <ul class="text-sm list-disc pl-5">
+            <li>Unificación de variables en un único dataset; control de faltantes y errores.</li>
+            <li>Histogramas, boxplots, detección de atípicos; rehacer dataset depurado.</li>
+            <li>Matriz de correlación (numéricas); Cramér’s V y Kruskal‑Wallis para categóricas.</li>
+          </ul>
+        </div>
+        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <p class="font-semibold">Transformación y modelos</p>
+          <ul class="text-sm list-disc pl-5">
+            <li><code>05-transformacion_datos</code>: MinMaxScaler + OneHotEncoder.</li>
+            <li><code>06-train_test_and_models</code>: split, GBM y Random Forest; tuning de hiperparámetros; métricas; mapas.</li>
+            <li>Añadido SVM; RF mantiene el mejor desempeño.</li>
+          </ul>
+        </div>
+        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <p class="font-semibold">Explicabilidad y mapas</p>
+          <ul class="text-sm list-disc pl-5">
+            <li>PDPs en R y solución en Python tras incidencias (tamaño/plots vacíos).</li>
+            <li>Gradiente de altitud del río imputado con KDTree para completar mapas de PLA.</li>
+          </ul>
+        </div>
+        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <p class="font-semibold">Automatización (HRM‑style)</p>
+          <ul class="text-sm list-disc pl-5">
+            <li>Diseño de planificador LLM + ejecutores Python con LangChain/LangGraph.</li>
+            <li>Evaluación de opciones: Ollama (recomendada), LM Studio, Hugging Face 1‑click, servidor propio (descartado).</li>
+          </ul>
+        </div>
+        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <p class="font-semibold">Divulgación</p>
+          <ul class="text-sm list-disc pl-5">
+            <li>Artículo publicado en la web de Fundación MAtriX; preparación de versión para prensa.</li>
+            <li><em>Mensaje LinkedIn — Beca ANFAIA</em>: visibilización del impacto social del proyecto.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recursos -->
+  <section id="recursos" class="py-12 sm:py-16 border-t border-slate-200/70 dark:border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-3 gap-6">
+      <div class="lg:col-span-2 prose prose-slate dark:prose-invert max-w-none">
+        <h2>Recursos</h2>
+        <ul>
+          <li><strong>Repositorio GitHub</strong>: <a id="repoLink" href="#" target="_blank" rel="noopener">(añadir URL)</a></li>
+          <li><strong>Artículo Fundación MAtriX</strong>: (enlace)</li>
+          <li><strong>Cuadernos</strong>: <code>modelo_AlphaEarth.ipynb</code>, <code>06-train_test_and_models.ipynb</code>, etc.</li>
+          <li><strong>Documentación</strong>: <code>README.md</code>, <code>updates.md</code></li>
+        </ul>
+        <h3>Créditos y apoyos</h3>
+        <p>Fundación MAtriX · Beca ANFAIA · Voluntariado y mentores.</p>
+      </div>
+      <aside class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+        <p class="font-semibold">Contacto</p>
+        <p class="text-sm mt-1">hugosuarezglez · (añadir email/redes)</p>
+        <p class="font-semibold mt-4">Cómo publicar en GitHub Pages</p>
+        <ol class="text-sm list-decimal pl-5 mt-1 space-y-1">
+          <li>Crea un repo llamado <code>hugosuarezglez.github.io</code> <em>o</em> usa el repo del proyecto.</li>
+          <li>Guarda este archivo como <code>index.html</code> en la raíz del repo.</li>
+          <li>En <em>Settings → Pages</em>, selecciona la rama (main) y carpeta <code>/root</code>.</li>
+          <li>Espera a que se construya y visita la URL indicada.</li>
+        </ol>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 border-t border-slate-200/70 dark:border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500">
+      <p>© <span id="year"></span> Hugo Suárez — En&nbsp;Peu</p>
+      <p>Hecho con HTML + Tailwind. Licencia MIT (ajustar según necesidad).</p>
+    </div>
   </footer>
 
   <script>
-    // Inicializar el idioma por defecto
-    changeLanguage('es');
+    // Año
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Tema
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const saved = localStorage.getItem('theme');
+    if ((saved === 'dark') || (!saved && prefersDark)) document.documentElement.classList.add('dark');
+    const toggle = document.getElementById('themeToggle');
+    const sun = document.getElementById('sun');
+    const moon = document.getElementById('moon');
+    const syncIcons = () => {
+      const dark = document.documentElement.classList.contains('dark');
+      sun.classList.toggle('hidden', !dark);
+      moon.classList.toggle('hidden', dark);
+    };
+    syncIcons();
+    toggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+      syncIcons();
+    });
+
+    // Rellenar enlace al repo si se abre desde GitHub Pages (mejorable)
+    const gh = document.getElementById('gh');
+    const repoLink = document.getElementById('repoLink');
+    try {
+      const host = location.host; // e.g. hugosuarezglez.github.io
+      if (host.includes('github.io')) {
+        gh.href = `https://${host}`;
+        repoLink.href = `https://github.com/${host.split('.')[0]}/${host.split('.')[0]}.github.io`;
+      }
+    } catch (e) {}
   </script>
 </body>
 </html>
