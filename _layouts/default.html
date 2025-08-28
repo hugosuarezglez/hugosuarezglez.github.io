@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ page.title | default: site.title }}</title>
+  <link rel="stylesheet" href="/assets/style.css">
+  {% seo %}
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100">
+  <header>
+    {% include header.html %}
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 py-8">
+    {{ content }}
+  </main>
+</body>
+</html>
