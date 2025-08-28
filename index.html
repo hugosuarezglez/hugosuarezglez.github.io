@@ -1,101 +1,100 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hugo Suárez González – Portfolio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Helvetica, Arial, sans-serif;
+    }
+  </style>
 </head>
-<body class="bg-gray-900 text-gray-100 font-sans">
-  <!-- Header -->
-  <header class="p-6 bg-gray-800 shadow-md sticky top-0 z-50">
-    <nav class="flex justify-between items-center max-w-4xl mx-auto">
-      <h1 class="text-xl font-bold">Hugo Suárez González</h1>
-      <div class="space-x-4">
-        <a href="#about" class="hover:text-blue-400">About</a>
-        <a href="#projects" class="hover:text-blue-400">Projects</a>
-        <a href="#articles" class="hover:text-blue-400">Articles</a>
-        <a href="#music" class="hover:text-blue-400">Music</a>
-        <a href="#contact" class="hover:text-blue-400">Contact</a>
-      </div>
-    </nav>
+<body class="bg-white text-black max-w-3xl mx-auto p-6">
+  
+  <!-- Language toggle -->
+  <div class="flex justify-end mb-4">
+    <button onclick="setLang('en')" class="px-3 py-1 border rounded mr-2">EN</button>
+    <button onclick="setLang('es')" class="px-3 py-1 border rounded">ES</button>
+  </div>
+
+  <!-- Profile section -->
+  <header class="text-center mb-10">
+    <img src="img/profile.jpg" alt="Hugo Suárez González" class="w-32 h-32 rounded-full mx-auto mb-4">
+    <h1 class="text-3xl font-bold">Hugo Suárez González</h1>
+    <p id="tagline" class="text-gray-600">Data Scientist & Artist</p>
   </header>
 
-  <!-- Hero -->
-  <section class="text-center py-20 bg-gradient-to-b from-gray-900 to-gray-800">
-    <h2 class="text-4xl font-extrabold mb-4">Data Scientist & Artist</h2>
-    <p class="text-lg max-w-2xl mx-auto">
-      I combine Artificial Intelligence research with artistic expression through music.  
-      <span class="block text-gray-400">Científico de datos y artista emergente en Galicia.</span>
-    </p>
-  </section>
+  <!-- Content -->
+  <main>
+    <!-- Projects -->
+    <section id="projects" class="mb-10">
+      <h2 class="text-2xl font-semibold mb-4" data-en="Projects" data-es="Proyectos">Projects</h2>
+      <ul class="list-disc pl-5 space-y-2">
+        <li>
+          <a href="https://github.com/ANFAIA/En-Peu" target="_blank" class="text-blue-600 hover:underline">
+            En Peu – AI for Flood Prediction
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/hugosuarezglez/SVM_RCC" target="_blank" class="text-blue-600 hover:underline">
+            Kidney Tumor Subtype Classification with ML
+          </a>
+        </li>
+      </ul>
+    </section>
 
-  <!-- About -->
-  <section id="about" class="max-w-4xl mx-auto px-6 py-16">
-    <h3 class="text-2xl font-bold mb-4">About Me</h3>
-    <p class="text-gray-300">
-      I am a Data Scientist specialized in Machine Learning applied to natural hazards and medical research.  
-      I also work as a science communicator and develop artistic projects with guitar and voice.  
-      <span class="block mt-2 text-gray-400">Soy científico de datos especializado en IA aplicada a riesgos naturales y medicina. También soy artista emergente.</span>
-    </p>
-  </section>
-
-  <!-- Projects -->
-  <section id="projects" class="max-w-4xl mx-auto px-6 py-16">
-    <h3 class="text-2xl font-bold mb-6">Projects</h3>
-    <div class="space-y-6">
-      <div class="p-4 bg-gray-800 rounded-xl shadow">
-        <h4 class="text-xl font-semibold">En Peu – AI for Flood Prediction</h4>
-        <p class="text-gray-400">Predictive model of flood depth in Paiporta, developed with machine learning.</p>
-        <a href="https://github.com/ANFAIA/En-Peu" target="_blank" class="text-blue-400 hover:underline">View project</a>
-      </div>
-      <div class="p-4 bg-gray-800 rounded-xl shadow">
-        <h4 class="text-xl font-semibold">Kidney Tumor Subtype Classification</h4>
-        <p class="text-gray-400">Master’s thesis applying ML models to classify kidney tumor subtypes.</p>
-        <a href="https://github.com/hugosuarezglez/SVM_RCC" target="_blank" class="text-blue-400 hover:underline">View project</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Articles -->
-  <section id="articles" class="max-w-4xl mx-auto px-6 py-16">
-    <h3 class="text-2xl font-bold mb-6">Papers</h3>
-    <ul class="list-disc list-inside text-gray-300 space-y-2">
-      <li>
-        <a href="https://fundacionmatrix.es/un-modelo-de-inteligencia-artificial-anticipa-la-magnitud-de-las-inundaciones-en-paiporta/" target="_blank" class="text-blue-400 hover:underline">
-          AI model anticipates the magnitude of floods in Paiporta (Fundación MAtriX)
+    <!-- Articles -->
+    <section id="articles" class="mb-10">
+      <h2 class="text-2xl font-semibold mb-4" data-en="Articles" data-es="Artículos">Articles</h2>
+      <div class="space-y-4">
+        <a href="https://fundacionmatrix.es/un-modelo-de-inteligencia-artificial-anticipa-la-magnitud-de-las-inundaciones-en-paiporta/" target="_blank" class="block hover:underline">
+          <img src="img/floods.jpg" alt="Flood article" class="w-full rounded mb-2">
+          <span>AI model anticipates the magnitude of floods in Paiporta</span>
         </a>
-      </li>
-      <li>
-        <a href="https://pubmed.ncbi.nlm.nih.gov/37103393/" target="_blank" class="text-blue-400 hover:underline">
-          Genomic and transcriptomic analysis of C-type lectins (Marine Drugs)
+        <a href="https://pubmed.ncbi.nlm.nih.gov/37103393/" target="_blank" class="block hover:underline">
+          <img src="img/lectins.jpg" alt="Lectins article" class="w-full rounded mb-2">
+          <span>Genomic and transcriptomic analysis of C-type lectins</span>
         </a>
-      </li>
-    </ul>
-  </section>
+      </div>
+    </section>
 
-  <!-- Music -->
-  <section id="music" class="max-w-4xl mx-auto px-6 py-16">
-    <h3 class="text-2xl font-bold mb-6">Music</h3>
-    <p class="text-gray-300 mb-4">Acoustic guitar and voice. Canciones propias y versiones.</p>
-    <a href="https://www.youtube.com/channel/UCXuUF7yy-JMzUpsWXKgVkxA" target="_blank" class="text-blue-400 hover:underline">
-      Visit my YouTube Channel
-    </a>
-  </section>
+    <!-- Music -->
+    <section id="music" class="mb-10">
+      <h2 class="text-2xl font-semibold mb-4" data-en="Music" data-es="Música">Music</h2>
+      <a href="https://www.youtube.com/channel/UCXuUF7yy-JMzUpsWXKgVkxA" target="_blank" class="block hover:underline">
+        <img src="img/music.jpg" alt="Music channel" class="w-full rounded mb-2">
+        <span>YouTube Channel – Acoustic guitar & voice</span>
+      </a>
+    </section>
 
-  <!-- Contact -->
-  <section id="contact" class="max-w-4xl mx-auto px-6 py-16">
-    <h3 class="text-2xl font-bold mb-6">Contact</h3>
-    <ul class="text-gray-300 space-y-2">
-      <li>GitHub: <a href="https://github.com/hugosuarezglez" target="_blank" class="text-blue-400 hover:underline">@hugosuarezglez</a></li>
-      <li>LinkedIn: *(https://www.linkedin.com/in/hugo-su%C3%A1rez-gonz%C3%A1lez-341208130/)*</li>
-      <li>Email: *(albsgonz@hotmail.com)*</li>
-    </ul>
-  </section>
+    <!-- Contact -->
+    <section id="contact" class="mb-10">
+      <h2 class="text-2xl font-semibold mb-4" data-en="Contact" data-es="Contacto">Contact</h2>
+      <img src="img/contact.jpg" alt="Contact" class="w-full rounded mb-2">
+      <ul>
+        <li>GitHub: <a href="https://github.com/hugosuarezglez" class="text-blue-600 hover:underline">@hugosuarezglez</a></li>
+        <li>LinkedIn: <em>(add link)</em></li>
+        <li>Email: <em>(add if public)</em></li>
+      </ul>
+    </section>
+  </main>
 
   <!-- Footer -->
-  <footer class="text-center py-6 bg-gray-800 text-gray-400">
-    © 2025 Hugo Suárez González..
+  <footer class="text-center text-gray-500 mt-10">
+    © 2025 Hugo Suárez González
   </footer>
+
+  <!-- Language switch script -->
+  <script>
+    function setLang(lang) {
+      document.querySelectorAll("[data-en]").forEach(el => {
+        el.innerText = el.getAttribute(`data-${lang}`);
+      });
+      document.getElementById("tagline").innerText = 
+        lang === "es" ? "Científico de Datos & Artista" : "Data Scientist & Artist";
+    }
+  </script>
 </body>
 </html>
