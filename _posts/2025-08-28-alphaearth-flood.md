@@ -20,8 +20,16 @@ What’s remarkable is that even by using only Alpha Earth’s embeddings, the m
 
 
 📊 **Results with embeddings integration:**  
-- Gradient Boosting Machine (GBM) → RMSE: 0.2185 | R²: 0.8872  
-- Random Forest (RF) → RMSE: 0.1219 | R²: 0.9649
+
+**𝗚𝗿𝗮𝗱𝗶𝗲𝗻𝘁 𝗕𝗼𝗼𝘀𝘁𝗶𝗻𝗴 𝗠𝗮𝗰𝗵𝗶𝗻𝗲 (𝗚𝗕𝗠)**
+RMSE: 0.2446 → 0.2185
+R²: 0.8587 → 0.8872
+
+
+
+**𝗥𝗮𝗻𝗱𝗼𝗺 𝗙𝗼𝗿𝗲𝘀𝘁 (𝗥𝗙)**
+RMSE: 0.1267 → 0.1219
+R²: 0.9621 → 0.9649
 
 
 
@@ -52,6 +60,8 @@ Durante mi trabajo con la beca Asociación FARO para la Aceleración de la Intel
 Este proyecto busca predecir la altitud de la lámina de agua en escenarios de inundación a partir de datos geoespaciales, con el fin de comprender y prevenir riesgos asociados a eventos extremos en el territorio.
 Gracias a la incorporación de estos embeddings, he logrado mejorar el rendimiento de mis modelos:
 
+
+📊 **Resultados con la incorporación de embeddings:** 
 
 
 **𝗚𝗿𝗮𝗱𝗶𝗲𝗻𝘁 𝗕𝗼𝗼𝘀𝘁𝗶𝗻𝗴 𝗠𝗮𝗰𝗵𝗶𝗻𝗲 (𝗚𝗕𝗠)**
