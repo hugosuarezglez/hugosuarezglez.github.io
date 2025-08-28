@@ -1,7 +1,54 @@
-title: "Portfolio – Hugo Suárez González"
-description: "Data Scientist & Artist"
-theme: minima   # o "jekyll-theme-cayman", puedes cambiarlo luego
+# Configuración del sitio
+title: Hugo Suárez González
+description: Data Scientist & Artist - Portfolio personal de proyectos de IA, ciencia de datos y música
+url: https://hugosuarezglez.github.io
+baseurl: ""
+
+# Configuración del autor
+author:
+  name: Hugo Suárez González
+  email: albsgonz@hotmail.com
+  github: hugosuarezglez
+  linkedin: hugo-suárez-gonzález-341208130
+
+# Configuración de Jekyll
 markdown: kramdown
+highlighter: rouge
+permalink: /posts/:title/
+
+# Kramdown settings para mejor renderizado de Markdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
+
+# Configuración de plugins
 plugins:
   - jekyll-feed
-  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Excluir archivos del sitio generado
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - LICENSE
+  - .gitignore
+
+# Configuración de fecha
+timezone: Europe/Madrid
+locale: es_ES
+
+# Configuración de posts
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Hugo Suárez González"
+
+# Configuración para GitHub Pages
+github: [Repository metadata]
