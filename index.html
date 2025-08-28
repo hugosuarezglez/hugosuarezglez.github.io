@@ -11,6 +11,18 @@ layout: default
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+  (function(){
+    try {
+      var theme = localStorage.getItem('theme');
+      if (theme === 'dark') document.documentElement.classList.add('dark');
+      else if (theme === 'light') document.documentElement.classList.remove('dark');
+      else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
+      }
+    } catch(e){}
+  })();
+</script>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
@@ -47,7 +59,7 @@ layout: default
       <div class="flex gap-2 mb-8">
         <button onclick="setLang('es')" id="btn-es" class="px-3 py-1 border border-slate-300 dark:border-slate-600 rounded text-sm bg-sky-600 text-white">ES</button>
         <button onclick="setLang('en')" id="btn-en" class="px-3 py-1 border border-slate-300 dark:border-slate-600 rounded text-sm hover:bg-slate-100 dark:hover:bg-slate-700">EN</button>
-        <button onclick="toggleDarkMode()" class="px-3 py-1 border border-slate-300 dark:border-slate-600 rounded text-sm hover:bg-slate-100 dark:hover:bg-slate-700">
+        <button onclick="toggleTheme()">🌗</button>
           <span class="dark:hidden">🌙</span>
           <span class="hidden dark:inline">☀️</span>
         </button>
@@ -556,15 +568,6 @@ layout: default
       <section id="posts" class="section">
         <h2 class="text-3xl font-bold mb-6">Posts</h2>
         <div class="space-y-4">
-          {% for post in site.posts %}
-            <div class="bg-white dark:bg-slate-800 rounded-lg shadow-md p-6">
-              <h3 class="text-xl font-semibold">
-                <a href="{{ post.url }}">{{ post.title }}</a>
-              </h3>
-              <p class="text-slate-500">{{ post.date | date: "%d-%m-%Y" }}</p>
-              <p>{{ post.excerpt }}</p>
-            </div>
-          {% endfor %}
         </div>
       </section>
 
@@ -685,5 +688,11 @@ layout: default
       showSection('enpeu-details');
     }
   </script>
+  <script>
+  function toggleTheme(){
+    var isDark = document.documentElement.classList.toggle('dark');
+    try { localStorage.setItem('theme', isDark ? 'dark' : 'light'); } catch(e){}
+  }
+</script>
 </body>
 </html>
