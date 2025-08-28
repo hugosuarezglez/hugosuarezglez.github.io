@@ -1,0 +1,7 @@
+title: "Portfolio – Hugo Suárez González"
+description: "Data Scientist & Artist"
+theme: minima   # o "jekyll-theme-cayman", puedes cambiarlo luego
+markdown: kramdown
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
