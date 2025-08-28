@@ -1,410 +1,409 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>En Peu · Portfolio — hugosuarezglez</title>
-  <meta name="description" content="Portfolio personal del proyecto En Peu: IA para predecir cota de inundación, documentación, resultados y hoja de ruta." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hugo Suárez González – Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; }
-    .prose h3 { scroll-margin-top: 96px; }
-    .chip { @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-slate-700; }
-    .kbd { @apply rounded-md border border-slate-300/70 px-1.5 py-0.5 text-[11px] font-mono bg-white shadow-sm; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans";
+    }
+    .section-hidden {
+      display: none;
+    }
+    .nav-active {
+      color: #0ea5e9;
+      font-weight: 500;
+    }
+    .category-card:hover {
+      transform: translateY(-2px);
+      transition: transform 0.2s ease-in-out;
+    }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
-  <!-- Nav -->
-  <header class="sticky top-0 z-50 backdrop-blur bg-white/70 dark:bg-slate-950/70 border-b border-slate-200/60 dark:border-slate-800">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="flex h-16 items-center justify-between">
-        <a href="#top" class="text-slate-900 dark:text-white font-extrabold tracking-tight text-lg">En&nbsp;Peu<span class="text-sky-600">·</span>hugosuarezglez</a>
-        <nav class="hidden md:flex items-center gap-6 text-sm">
-          <a href="#acerca" class="hover:text-sky-600">Acerca</a>
-          <a href="#variables" class="hover:text-sky-600">Datos</a>
-          <a href="#metodo" class="hover:text-sky-600">Método</a>
-          <a href="#resultados" class="hover:text-sky-600">Resultados</a>
-          <a href="#hrm" class="hover:text-sky-600">HRM</a>
-          <a href="#alphaearth" class="hover:text-sky-600">AlphaEarth</a>
-          <a href="#timeline" class="hover:text-sky-600">Timeline</a>
-          <a href="#recursos" class="hover:text-sky-600">Recursos</a>
-        </nav>
-        <div class="flex items-center gap-2">
-          <a id="gh" href="#" target="_blank" rel="noopener" class="hidden sm:inline-flex h-9 items-center rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-3 text-sm font-semibold shadow hover:opacity-90">Repositorio</a>
-          <button id="themeToggle" class="h-9 w-9 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800" title="Cambiar tema" aria-label="Cambiar tema">
-            <svg id="sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 hidden">
-              <path d="M12 2a1 1 0 011 1v2a1 1 0 11-2 0V3a1 1 0 011-1zm0 17a1 1 0 011 1v2a1 1 0 11-2 0v-2a1 1 0 011-1zM4.22 4.22a1 1 0 011.42 0L7 5.59a1 1 0 01-1.41 1.41L4.22 5.64a1 1 0 010-1.42zM17 16.59a1 1 0 011.41 0l1.36 1.36a1 1 0 01-1.41 1.41L17 18a1 1 0 010-1.41zM2 11a1 1 0 011-1h2a1 1 0 110 2H3a1 1 0 01-1-1zm17 0a1 1 0 011-1h2a1 1 0 110 2h-2a1 1 0 01-1-1zM4.22 18.36a1 1 0 010-1.42L5.59 15.6A1 1 0 017 17l-1.36 1.36a1 1 0 01-1.42 0zM18.36 4.22a1 1 0 010 1.42L17 7a1 1 0 01-1.41-1.41l1.36-1.36a1 1 0 011.41 0z"/>
-            </svg>
-            <svg id="moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
-              <path d="M21.64 13a9 9 0 11-10.63-10A7 7 0 0021.64 13z" />
-            </svg>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300">
+  <div class="flex min-h-screen max-w-7xl mx-auto">
+
+    <!-- Sidebar -->
+    <aside class="w-80 bg-white dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 p-8 flex flex-col items-center sticky top-0 h-screen">
+      <!-- Foto de perfil -->
+      <img src="imgs/perfil.jpg" alt="Hugo Suárez González" class="w-32 h-32 rounded-full mb-4 shadow-lg object-cover">
+      
+      <!-- Nombre -->
+      <h1 class="text-xl font-bold text-slate-800 dark:text-slate-200 text-center">Hugo Suárez González</h1>
+      
+      <!-- Descripción -->
+      <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 text-center">Data Scientist & Artist</p>
+
+      <!-- Botones de idioma y tema -->
+      <div class="flex gap-2 mb-8">
+        <button onclick="setLang('es')" id="btn-es" class="px-3 py-1 border border-slate-300 dark:border-slate-600 rounded text-sm bg-sky-600 text-white">ES</button>
+        <button onclick="setLang('en')" id="btn-en" class="px-3 py-1 border border-slate-300 dark:border-slate-600 rounded text-sm hover:bg-slate-100 dark:hover:bg-slate-700">EN</button>
+        <button onclick="toggleDarkMode()" class="px-3 py-1 border border-slate-300 dark:border-slate-600 rounded text-sm hover:bg-slate-100 dark:hover:bg-slate-700">
+          <span class="dark:hidden">🌙</span>
+          <span class="hidden dark:inline">☀️</span>
+        </button>
+      </div>
+
+      <!-- Navegación -->
+      <nav class="flex flex-col space-y-3 text-sm w-full">
+        <a href="#" onclick="showSection('home')" id="nav-home" class="nav-link nav-active p-2 rounded hover:bg-slate-100 dark:hover:bg-slate-700 text-center" 
+           data-en="Home" data-es="Inicio">Inicio</a>
+        <a href="#" onclick="showSection('categories')" id="nav-categories" class="nav-link p-2 rounded hover:bg-slate-100 dark:hover:bg-slate-700 text-center" 
+           data-en="Categories" data-es="Categorías">Categorías</a>
+        <a href="#" onclick="showSection('posts')" id="nav-posts" class="nav-link p-2 rounded hover:bg-slate-100 dark:hover:bg-slate-700 text-center" 
+           data-en="Posts" data-es="Posts">Posts</a>
+        <a href="#" onclick="showSection('resume')" id="nav-resume" class="nav-link p-2 rounded hover:bg-slate-100 dark:hover:bg-slate-700 text-center" 
+           data-en="Resume" data-es="Currículum">Currículum</a>
+      </nav>
+
+      <!-- Enlaces sociales -->
+      <div class="mt-auto pt-8 flex flex-col items-center space-y-2 text-sm">
+        <a href="https://github.com/hugosuarezglez" target="_blank" class="text-slate-600 dark:text-slate-400 hover:text-sky-600">GitHub</a>
+        <a href="#" target="_blank" class="text-slate-600 dark:text-slate-400 hover:text-sky-600">LinkedIn</a>
+        <a href="https://www.youtube.com/channel/UCXuUF7yy-JMzUpsWXKgVkxA" target="_blank" class="text-slate-600 dark:text-slate-400 hover:text-sky-600">YouTube</a>
+      </div>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="flex-1 p-10">
+      
+      <!-- Home -->
+      <section id="home" class="section">
+        <div class="max-w-4xl">
+          <h2 class="text-3xl font-bold mb-6" data-en="About Me" data-es="Sobre mí">Sobre mí</h2>
+          <div class="prose prose-slate dark:prose-invert max-w-none">
+            <p data-en="I am a Data Scientist and artist passionate about applying AI and machine learning to real-world challenges like flood risk management and medical research. Currently working on AI projects for social impact, including flood prediction systems and medical data analysis. At the same time, I cultivate a creative path as a singer-songwriter." 
+               data-es="Soy Data Scientist y artista, apasionado por aplicar IA y machine learning a desafíos del mundo real como la gestión del riesgo de inundaciones y la investigación médica. Actualmente trabajo en proyectos de IA con impacto social, incluyendo sistemas de predicción de inundaciones y análisis de datos médicos. Al mismo tiempo, cultivo mi faceta creativa como cantautor.">
+               Soy Data Scientist y artista, apasionado por aplicar IA y machine learning a desafíos del mundo real como la gestión del riesgo de inundaciones y la investigación médica. Actualmente trabajo en proyectos de IA con impacto social, incluyendo sistemas de predicción de inundaciones y análisis de datos médicos. Al mismo tiempo, cultivo mi faceta creativa como cantautor.
+            </p>
+            <p data-en="My work spans from academic research to practical applications, always with a focus on using technology to make a positive impact on society." 
+               data-es="Mi trabajo abarca desde investigación académica hasta aplicaciones prácticas, siempre enfocado en usar la tecnología para generar un impacto positivo en la sociedad.">
+               Mi trabajo abarca desde investigación académica hasta aplicaciones prácticas, siempre enfocado en usar la tecnología para generar un impacto positivo en la sociedad.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Categorías -->
+      <section id="categories" class="section section-hidden">
+        <h2 class="text-3xl font-bold mb-8" data-en="Categories" data-es="Categorías">Categorías</h2>
+        <div class="grid grid-cols-2 gap-8 max-w-4xl">
+
+          <!-- Proyectos -->
+          <div onclick="showSection('projects')" class="category-card cursor-pointer group">
+            <div class="bg-white dark:bg-slate-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+              <img src="imgs/proyectos.png" alt="Proyectos" class="w-full h-48 object-cover group-hover:opacity-90 transition-opacity">
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-semibold" data-en="Projects" data-es="Proyectos">Proyectos</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Artículos -->
+          <div onclick="showSection('articles')" class="category-card cursor-pointer group">
+            <div class="bg-white dark:bg-slate-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+              <img src="imgs/articles.png" alt="Artículos" class="w-full h-48 object-cover group-hover:opacity-90 transition-opacity">
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-semibold" data-en="Articles" data-es="Artículos">Artículos</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Música -->
+          <div onclick="showSection('music')" class="category-card cursor-pointer group">
+            <div class="bg-white dark:bg-slate-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+              <img src="imgs/music.png" alt="Música" class="w-full h-48 object-cover group-hover:opacity-90 transition-opacity">
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-semibold" data-en="Music" data-es="Música">Música</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contacto -->
+          <div onclick="showSection('contact')" class="category-card cursor-pointer group">
+            <div class="bg-white dark:bg-slate-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+              <img src="imgs/contacto.png" alt="Contacto" class="w-full h-48 object-cover group-hover:opacity-90 transition-opacity">
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-semibold" data-en="Contact" data-es="Contacto">Contacto</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Proyectos -->
+      <section id="projects" class="section section-hidden">
+        <div class="flex items-center mb-8">
+          <button onclick="showSection('categories')" class="mr-4 text-slate-600 dark:text-slate-400 hover:text-sky-600">← 
+            <span data-en="Back" data-es="Volver">Volver</span>
           </button>
+          <h2 class="text-3xl font-bold" data-en="Projects" data-es="Proyectos">Proyectos</h2>
         </div>
-      </div>
-    </div>
-  </header>
+        
+        <div class="grid gap-8 max-w-4xl">
+          <!-- En Peu -->
+          <div class="bg-white dark:bg-slate-800 rounded-lg shadow-md p-6">
+            <h3 class="text-xl font-semibold mb-3" data-en="En Peu – AI for Flood Prediction" data-es="En Peu – IA para Predicción de Inundaciones">En Peu – IA para Predicción de Inundaciones</h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-4" 
+               data-en="AI project to predict flood height (PLA) in urban and peri-urban environments. Uses machine learning models like Random Forest and XGBoost with geospatial variables."
+               data-es="Proyecto de IA para predecir la cota de inundación (PLA) en entornos urbanos y periurbanos. Utiliza modelos de machine learning como Random Forest y XGBoost con variables geoespaciales.">
+               Proyecto de IA para predecir la cota de inundación (PLA) en entornos urbanos y periurbanos. Utiliza modelos de machine learning como Random Forest y XGBoost con variables geoespaciales.
+            </p>
+            <div class="flex gap-3">
+              <a href="https://github.com/ANFAIA/En-Peu" target="_blank" class="inline-flex items-center px-4 py-2 bg-sky-600 text-white rounded-lg hover:bg-sky-700 transition-colors">
+                <span data-en="GitHub Repository" data-es="Repositorio GitHub">Repositorio GitHub</span>
+              </a>
+              <button onclick="showEnPeuDetails()" class="inline-flex items-center px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
+                <span data-en="View Details" data-es="Ver Detalles">Ver Detalles</span>
+              </button>
+            </div>
+          </div>
 
-  <!-- Hero -->
-  <section id="top" class="pt-16">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 grid lg:grid-cols-2 gap-10 items-center">
-      <div>
-        <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight tracking-tight">Hugo Suárez — <span class="text-sky-600">En&nbsp;Peu</span></h1>
-        <p class="mt-5 text-lg text-slate-600 dark:text-slate-300">Portfolio personal del proyecto de IA para predicción de <em>cota de inundación (PLA)</em> en entornos urbanos y periurbanos. Documenta desde mis inicios en la <strong>Fundación MAtriX</strong> hasta la <strong>beca ANFAIA</strong>.</p>
-        <div class="mt-6 flex flex-wrap gap-3">
-          <a href="#resultados" class="inline-flex h-11 items-center rounded-xl bg-sky-600 text-white px-4 text-sm font-semibold shadow hover:bg-sky-700">Ver resultados</a>
-          <a href="#recursos" class="inline-flex h-11 items-center rounded-xl border border-slate-300 dark:border-slate-700 px-4 text-sm font-semibold hover:bg-slate-100 dark:hover:bg-slate-800">Recursos & docs</a>
-          <span class="chip">@hugosuarezglez</span>
-        </div>
-      </div>
-      <div class="relative">
-        <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-sky-50 to-slate-50 dark:from-sky-900/10 dark:to-slate-900/10 p-6 shadow-inner">
-          <ul class="grid grid-cols-2 gap-3 text-sm">
-            <li class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-              <p class="font-semibold">Mejor modelo</p>
-              <p class="text-slate-600 dark:text-slate-300">Random Forest</p>
-            </li>
-            <li class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-              <p class="font-semibold">Librerías</p>
-              <p class="text-slate-600 dark:text-slate-300">scikit‑learn, XGBoost, SciPy</p>
-            </li>
-            <li class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-              <p class="font-semibold">EDA</p>
-              <p class="text-slate-600 dark:text-slate-300">Boxplots, histos, outliers</p>
-            </li>
-            <li class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-              <p class="font-semibold">Explicabilidad</p>
-              <p class="text-slate-600 dark:text-slate-300">PDPs · Importancias</p>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Acerca -->
-  <section id="acerca" class="py-12 sm:py-16 border-t border-slate-200/70 dark:border-slate-800">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 prose prose-slate dark:prose-invert">
-      <h2>Acerca del proyecto</h2>
-      <p><strong>En&nbsp;Peu</strong> es una iniciativa de ciencia de datos aplicada a la gestión del riesgo de inundaciones. El objetivo es <em>predecir la cota de lámina de agua (PLA)</em> a partir de variables geoespaciales y urbanas, generar mapas interpretables y ofrecer una herramienta reproducible para ayuntamientos y ciudadanía.</p>
-      <p>Este portfolio recoge la documentación del repositorio, cuadernos, scripts, artículos divulgativos y notas técnicas desde mis inicios en la <strong>Fundación MAtriX</strong> hasta la <strong>beca ANFAIA</strong>, pasando por la investigación de modelos clásicos (RF/GBM/SVM) y propuestas más avanzadas como embeddings de <em>AlphaEarth</em> y un orquestador de tipo <em>HRM‑style</em>.</p>
-    </div>
-  </section>
-
-  <!-- Variables y datos -->
-  <section id="variables" class="py-12 sm:py-16">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="mb-6">
-        <h2 class="text-2xl sm:text-3xl font-bold">Datos & variables</h2>
-        <p class="text-slate-600 dark:text-slate-300 mt-2">Variables presentes en los CSV y su significado.</p>
-      </div>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="space-y-3 text-sm leading-6">
-          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-            <p><span class="chip">A</span> <strong>Altitud</strong>. Numérica: elevación s.n.m.</p>
-          </div>
-          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-            <p><span class="chip">AC</span> <strong>Anchura de calles</strong>. Categórica → numérica por valor medio del rango.</p>
-          </div>
-          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-            <p><span class="chip">B</span> <strong>Barranco</strong>. Binaria: 0 = cauce, 1 = no cauce.</p>
-          </div>
-          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-            <p><span class="chip">CICCB</span> Curvatura del cauce · capacidad de acumulación. Numérica.</p>
-          </div>
-          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-            <p><span class="chip">CIB</span> Capacidad de inundación del barranco por sección/situación. Numérica.</p>
+          <!-- SVM_RCC -->
+          <div class="bg-white dark:bg-slate-800 rounded-lg shadow-md p-6">
+            <h3 class="text-xl font-semibold mb-3" data-en="SVM_RCC – Kidney Tumor Classification" data-es="SVM_RCC – Clasificación de Tumores Renales">SVM_RCC – Clasificación de Tumores Renales</h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-4"
+               data-en="Master's thesis project: Classification of kidney tumor subtypes using Machine Learning. Applied SVM and other algorithms to medical genomic data."
+               data-es="Proyecto de Trabajo de Fin de Máster: Clasificación de subtipos de tumor de riñón usando Machine Learning. Aplicación de SVM y otros algoritmos a datos genómicos médicos.">
+               Proyecto de Trabajo de Fin de Máster: Clasificación de subtipos de tumor de riñón usando Machine Learning. Aplicación de SVM y otros algoritmos a datos genómicos médicos.
+            </p>
+            <a href="https://github.com/hugosuarezglez/SVM_RCC" target="_blank" class="inline-flex items-center px-4 py-2 bg-sky-600 text-white rounded-lg hover:bg-sky-700 transition-colors">
+              <span data-en="GitHub Repository" data-es="Repositorio GitHub">Repositorio GitHub</span>
+            </a>
           </div>
         </div>
-        <div class="space-y-3 text-sm leading-6">
-          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-            <p><span class="chip">CUS</span> <strong>Uso del suelo</strong>. Categórica: 1 Cultivos · 2 Edificios · 3 Suelo desnudo · 4 Zonas verdes · 5 Vial.</p>
+      </section>
+
+      <!-- Detalles En Peu -->
+      <section id="enpeu-details" class="section section-hidden">
+        <div class="flex items-center mb-8">
+          <button onclick="showSection('projects')" class="mr-4 text-slate-600 dark:text-slate-400 hover:text-sky-600">← 
+            <span data-en="Back to Projects" data-es="Volver a Proyectos">Volver a Proyectos</span>
+          </button>
+          <h2 class="text-3xl font-bold">En Peu – <span data-en="AI for Flood Prediction" data-es="IA para Predicción de Inundaciones">IA para Predicción de Inundaciones</span></h2>
+        </div>
+        
+        <!-- Aquí puedes incluir el contenido detallado del proyecto En Peu -->
+        <div class="max-w-4xl prose prose-slate dark:prose-invert">
+          <p data-en="Detailed information about the En Peu project..." data-es="Información detallada sobre el proyecto En Peu...">
+            Información detallada sobre el proyecto En Peu...
+          </p>
+        </div>
+      </section>
+
+      <!-- Artículos -->
+      <section id="articles" class="section section-hidden">
+        <div class="flex items-center mb-8">
+          <button onclick="showSection('categories')" class="mr-4 text-slate-600 dark:text-slate-400 hover:text-sky-600">← 
+            <span data-en="Back" data-es="Volver">Volver</span>
+          </button>
+          <h2 class="text-3xl font-bold" data-en="Articles" data-es="Artículos">Artículos</h2>
+        </div>
+        
+        <div class="space-y-6 max-w-4xl">
+          <div class="bg-white dark:bg-slate-800 rounded-lg shadow-md p-6">
+            <h3 class="text-lg font-semibold mb-2">
+              <a href="https://fundacionmatrix.es/un-modelo-de-inteligencia-artificial-anticipa-la-magnitud-de-las-inundaciones-en-paiporta/" 
+                 target="_blank" class="text-sky-600 hover:text-sky-700">
+                 <span data-en="AI model anticipates the magnitude of floods in Paiporta" 
+                       data-es="Un modelo de inteligencia artificial anticipa la magnitud de las inundaciones en Paiporta">
+                   Un modelo de inteligencia artificial anticipa la magnitud de las inundaciones en Paiporta
+                 </span>
+              </a>
+            </h3>
+            <p class="text-slate-600 dark:text-slate-400" 
+               data-en="Article published in Fundación MAtriX about the En Peu project."
+               data-es="Artículo publicado en Fundación MAtriX sobre el proyecto En Peu.">
+               Artículo publicado en Fundación MAtriX sobre el proyecto En Peu.
+            </p>
           </div>
-          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-            <p><span class="chip">DBB</span> Distancia al borde del cauce (m). Numérica.</p>
+          
+          <div class="bg-white dark:bg-slate-800 rounded-lg shadow-md p-6">
+            <h3 class="text-lg font-semibold mb-2">
+              <a href="https://pubmed.ncbi.nlm.nih.gov/37103393/" 
+                 target="_blank" class="text-sky-600 hover:text-sky-700">
+                 <span data-en="Genomic and transcriptomic analysis of C-type lectins" 
+                       data-es="Análisis genómico y transcriptómico de lectinas tipo C">
+                   Análisis genómico y transcriptómico de lectinas tipo C
+                 </span>
+              </a>
+            </h3>
+            <p class="text-slate-600 dark:text-slate-400"
+               data-en="Scientific publication in PubMed about genomic analysis."
+               data-es="Publicación científica en PubMed sobre análisis genómico.">
+               Publicación científica en PubMed sobre análisis genómico.
+            </p>
           </div>
-          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-            <p><span class="chip">DOB</span> Distancia a obstáculos en el cauce (m). Numérica.</p>
+        </div>
+      </section>
+
+      <!-- Música -->
+      <section id="music" class="section section-hidden">
+        <div class="flex items-center mb-8">
+          <button onclick="showSection('categories')" class="mr-4 text-slate-600 dark:text-slate-400 hover:text-sky-600">← 
+            <span data-en="Back" data-es="Volver">Volver</span>
+          </button>
+          <h2 class="text-3xl font-bold" data-en="Music" data-es="Música">Música</h2>
+        </div>
+        
+        <div class="max-w-4xl">
+          <div class="bg-white dark:bg-slate-800 rounded-lg shadow-md p-6">
+            <h3 class="text-xl font-semibold mb-4" data-en="Acoustic Guitar & Voice" data-es="Guitarra Acústica y Voz">Guitarra Acústica y Voz</h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-4"
+               data-en="Singer-songwriter exploring acoustic sounds and original compositions."
+               data-es="Cantautor explorando sonidos acústicos y composiciones originales.">
+               Cantautor explorando sonidos acústicos y composiciones originales.
+            </p>
+            <a href="https://www.youtube.com/channel/UCXuUF7yy-JMzUpsWXKgVkxA" target="_blank" 
+               class="inline-flex items-center px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
+               <span data-en="YouTube Channel" data-es="Canal de YouTube">Canal de YouTube</span>
+            </a>
           </div>
-          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-            <p><span class="chip">OC</span> <strong>Orientación calles</strong>. Categórica: 1 Oblicua · 2 Paralela · 3 Perpendicular · 4 Otras.</p>
+        </div>
+      </section>
+
+      <!-- Posts -->
+      <section id="posts" class="section section-hidden">
+        <h2 class="text-3xl font-bold mb-6" data-en="Posts" data-es="Posts">Posts</h2>
+        <div class="max-w-4xl">
+          <p class="text-slate-600 dark:text-slate-400 mb-8"
+             data-en="Here I share blog-style posts, reflections, and ideas also published on LinkedIn."
+             data-es="Aquí comparto pequeñas entradas de blog, reflexiones e ideas que también publico en LinkedIn.">
+             Aquí comparto pequeñas entradas de blog, reflexiones e ideas que también publico en LinkedIn.
+          </p>
+          
+          <!-- Placeholder para posts futuros -->
+          <div class="bg-white dark:bg-slate-800 rounded-lg shadow-md p-6">
+            <p class="text-slate-500 dark:text-slate-400 italic"
+               data-en="Posts coming soon..."
+               data-es="Posts próximamente...">
+               Posts próximamente...
+            </p>
           </div>
-          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-            <p><span class="chip">P</span> <strong>Pendiente</strong> (%). Numérica.</p>
+        </div>
+      </section>
+
+      <!-- Resume -->
+      <section id="resume" class="section section-hidden">
+        <h2 class="text-3xl font-bold mb-6" data-en="Resume" data-es="Currículum">Currículum</h2>
+        <div class="max-w-4xl">
+          <div class="bg-white dark:bg-slate-800 rounded-lg shadow-md p-6">
+            <h3 class="text-xl font-semibold mb-4" data-en="Download CV" data-es="Descargar CV">Descargar CV</h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-4"
+               data-en="Download my complete resume in PDF format."
+               data-es="Descarga mi currículum completo en formato PDF.">
+               Descarga mi currículum completo en formato PDF.
+            </p>
+            <a href="docs/CV_Hugo_Suarez.pdf" target="_blank" 
+               class="inline-flex items-center px-4 py-2 bg-slate-600 text-white rounded-lg hover:bg-slate-700 transition-colors">
+               📄 <span class="ml-2" data-en="Download CV (PDF)" data-es="Descargar CV (PDF)">Descargar CV (PDF)</span>
+            </a>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <!-- Método -->
-  <section id="metodo" class="py-12 sm:py-16 border-t border-slate-200/70 dark:border-slate-800">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-10 items-start">
-      <div class="prose prose-slate dark:prose-invert max-w-none">
-        <h2>Metodología y flujo de trabajo</h2>
-        <ol>
-          <li><strong>Ingesta y limpieza</strong>: combinación de CSV, control de faltantes, depuración de outliers.</li>
-          <li><strong>EDA</strong>: histogramas y boxplots; matriz de correlación para numéricas; <em>Cramér’s V</em> (cat↔cat) y <em>Kruskal‑Wallis</em> (cat↔num) sin asumir normalidad.</li>
-          <li><strong>Transformaciones</strong>: <code>MinMaxScaler</code> para numéricas y <code>OneHotEncoder</code> para categóricas.</li>
-          <li><strong>Partición</strong>: <code>train/test</code> con <code>scikit‑learn</code>.</li>
-          <li><strong>Modelado</strong>: <em>Random Forest</em>, <em>Gradient Boosting</em>, <em>SVM</em> y pruebas con <em>XGBoost</em>. Búsqueda de hiperparámetros.</li>
-          <li><strong>Evaluación</strong>: <span class="chip">R²</span> <span class="chip">RMSE</span> <span class="chip">MAE</span>. Gráficos comparativos y dispersión observado vs predicho.</li>
-          <li><strong>Mapas</strong>: PLA observada vs predicha y mapa de error absoluto. Imputación de altitud en cauces con <code>KDTree</code> (SciPy).</li>
-          <li><strong>Explicabilidad</strong>: <em>Partial Dependence Plots (PDPs)</em> para variables numéricas clave; importancias de variables.</li>
-          <li><strong>Dimensión espacial</strong> (en exploración): validación cruzada espacial, coordenadas XY, promedios de vecinos, flujos.</li>
-        </ol>
-        <p>El repositorio está organizado por scripts (p. ej. <code>05-transformacion_datos</code>, <code>06-train_test_and_models</code>) y documentación (<code>README.md</code>, <code>updates.md</code>).</p>
-      </div>
-      <div class="space-y-4">
-        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-          <p class="font-semibold mb-2">Conversaciones integradas</p>
-          <ul class="text-sm leading-6 list-disc pl-5">
-            <li><em>Leer y combinar CSV</em>: pipeline de unión y validación.</li>
-            <li><em>AlphaEarth — explicación sencilla</em>: uso de embeddings satelitales (64D) para enriquecer el modelo.</li>
-            <li><em>Modelo de razonamiento jerárquico</em>: orquestación HRM‑style (planificador LLM + ejecutores Python).</li>
-            <li><em>Mensaje LinkedIn — Beca ANFAIA</em>: hitos personales e impacto social.</li>
-            <li><em>Modelos predictivos inundación</em>: RF/GBM/SVM, métricas, mapas.</li>
-            <li><em>Resumen IA inundaciones</em>: visión divulgativa para prensa.</li>
-          </ul>
+      <!-- Contacto -->
+      <section id="contact" class="section section-hidden">
+        <div class="flex items-center mb-8">
+          <button onclick="showSection('categories')" class="mr-4 text-slate-600 dark:text-slate-400 hover:text-sky-600">← 
+            <span data-en="Back" data-es="Volver">Volver</span>
+          </button>
+          <h2 class="text-3xl font-bold" data-en="Contact" data-es="Contacto">Contacto</h2>
         </div>
-        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-          <p class="font-semibold mb-2">Stack técnico</p>
-          <p class="text-sm">Python, R, scikit‑learn, XGBoost, SciPy, NumPy, pandas, Matplotlib; GIS; Colab; Git/GitHub; VS Code.</p>
+        
+        <div class="max-w-4xl">
+          <div class="bg-white dark:bg-slate-800 rounded-lg shadow-md p-6">
+            <h3 class="text-xl font-semibold mb-4" data-en="Get in Touch" data-es="Ponte en Contacto">Ponte en Contacto</h3>
+            <div class="space-y-3">
+              <p><strong>GitHub:</strong> <a href="https://github.com/hugosuarezglez" target="_blank" class="text-sky-600 hover:text-sky-700">@hugosuarezglez</a></p>
+              <p><strong>Email:</strong> <span class="text-slate-600 dark:text-slate-400">[añadir si es público]</span></p>
+              <p><strong>LinkedIn:</strong> <span class="text-slate-600 dark:text-slate-400">[añadir enlace]</span></p>
+              <p><strong>YouTube:</strong> <a href="https://www.youtube.com/channel/UCXuUF7yy-JMzUpsWXKgVkxA" target="_blank" class="text-sky-600 hover:text-sky-700">Canal de Música</a></p>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
+    </main>
+  </div>
 
-  <!-- Resultados -->
-  <section id="resultados" class="py-12 sm:py-16">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <h2 class="text-2xl sm:text-3xl font-bold">Resultados</h2>
-      <p class="mt-2 text-slate-600 dark:text-slate-300">Comparativa de modelos y visualizaciones clave. Sustituye los valores de ejemplo por los reales del repositorio.</p>
-      <div class="grid lg:grid-cols-3 gap-6 mt-6">
-        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-          <p class="font-semibold">Métricas (ejemplo)</p>
-          <ul class="text-sm mt-2 space-y-1">
-            <li>Random Forest — R²: <strong>0.82</strong> · RMSE: <strong>0.18</strong> · MAE: <strong>0.12</strong></li>
-            <li>GBM — R²: 0.79 · RMSE: 0.20 · MAE: 0.14</li>
-            <li>SVM — R²: 0.74 · RMSE: 0.23 · MAE: 0.17</li>
-          </ul>
-          <p class="text-xs text-slate-500 mt-2">*Reemplazar por cifras reales del último <code>06-*.ipynb</code>.</p>
-        </div>
-        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-          <p class="font-semibold">Gráficas</p>
-          <ul class="text-sm mt-2 list-disc pl-5">
-            <li>Dispersión: predicho vs observado</li>
-            <li>Comparativa R² / RMSE / MAE</li>
-            <li>PDPs de variables clave</li>
-          </ul>
-        </div>
-        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-          <p class="font-semibold">Mapas</p>
-          <ul class="text-sm mt-2 list-disc pl-5">
-            <li>PLA observada vs predicha (test)</li>
-            <li>Mapa de error absoluto</li>
-            <li>Gradiente de altitud en cauce (KDTree)</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- HRM -->
-  <section id="hrm" class="py-12 sm:py-16 border-t border-slate-200/70 dark:border-slate-800">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-10 items-start">
-      <div class="prose prose-slate dark:prose-invert max-w-none">
-        <h2>HRM‑style: planificador + ejecutores</h2>
-        <p>Implementación inspirada en el <em>Hierarchical Reasoning Model</em>: un <strong>planificador LLM</strong> decide pasos (geocodificar municipio → validar WGS84 → descargar embeddings AlphaEarth → construir dataset → entrenar/cargar modelo → predecir → mapear) y <strong>ejecutores Python/GIS</strong> realizan cada tarea.</p>
-        <h3>Ventajas</h3>
-        <ul>
-          <li>Flexibilidad y extensibilidad del pipeline</li>
-          <li>Reusabilidad para distintos municipios</li>
-          <li>Transparencia: el planificador explica acciones</li>
-        </ul>
-        <h3>Contras</h3>
-        <ul>
-          <li>Complejidad de despliegue (Ollama/Qwen, LangChain/LangGraph)</li>
-          <li>Overkill si el pipeline es fijo</li>
-          <li>No mejora per se la métrica predictiva</li>
-        </ul>
-      </div>
-      <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-        <p class="font-semibold mb-2">Opciones de arquitectura</p>
-        <ol class="text-sm list-decimal pl-5 space-y-1">
-          <li>Ollama + LangChain (recomendada: 100% OSS, portable)</li>
-          <li>LM Studio + Python (GUI sencilla)</li>
-          <li>Descarga automática HF + GitHub (1‑click setup)</li>
-          <li>Servidor propio (descartado por coste/mantenimiento)</li>
-        </ol>
-        <p class="text-xs text-slate-500 mt-3">Nota: este HRM‑style no es la arquitectura HRM del paper; replica la separación jerárquica con LLM + herramientas clásicas.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- HRM del paper -->
-  <section id="hrm-paper" class="py-12 sm:py-16">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-10 items-start">
-      <div class="prose prose-slate dark:prose-invert max-w-none">
-        <h2>HRM (paper): investigación aplicada</h2>
-        <p>Adaptación experimental del HRM original (dos RNN jerárquicas con parada adaptativa) a una tarea de <strong>regresión PLA</strong>. Requiere PyTorch + CUDA, datasets suficientes y ajustes de pérdidas/arquitectura. Objetivo: usar HRM como <em>predicto</em>r directo o como <em>extractor de features</em> para potenciar RF/GBM.</p>
-      </div>
-      <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-        <p class="font-semibold mb-2">Estado</p>
-        <ul class="text-sm list-disc pl-5">
-          <li>Prototipo en Colab (PyTorch puro). Rendimiento inicial inferior a RF/GBM.</li>
-          <li>Idea prometedora: <strong>HRM como extractor de representaciones</strong> + modelo tabular final.</li>
-          <li>Posible línea publicable a medio plazo.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- AlphaEarth -->
-  <section id="alphaearth" class="py-12 sm:py-16 border-t border-slate-200/70 dark:border-slate-800">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-10 items-start">
-      <div class="prose prose-slate dark:prose-invert max-w-none">
-        <h2>AlphaEarth: embeddings satelitales</h2>
-        <p>Dos vías exploradas: (1) descargar <em>embeddings</em> públicos (≈64D) y añadirlos como features al modelo; (2) entrenar un modelo propio tipo AlphaEarth para generar embeddings específicos de la zona. La prioridad es (1); (2) abre una vía de I+D.</p>
-        <p>Incidencias: descarga lenta y <em>missing</em> generalizado por incompatibilidad de coordenadas → pendiente de transformar a formato compatible y reintentar (<code>modelo_AlphaEarth.ipynb</code> en el repo).</p>
-      </div>
-      <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-        <p class="font-semibold mb-2">Integración prevista</p>
-        <ul class="text-sm list-disc pl-5">
-          <li>Pipeline: coords municipio → embeddings → concatenación con A, AC, B, ... P → entrenamiento/evaluación.</li>
-          <li>Validar sistema de referencia (WGS84) y tiles.</li>
-          <li>Comparar desempeño con/sin embeddings.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Timeline / Diario -->
-  <section id="timeline" class="py-12 sm:py-16">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <h2 class="text-2xl sm:text-3xl font-bold">Timeline del proyecto</h2>
-      <p class="mt-2 text-slate-600 dark:text-slate-300">Hitos desde Fundación MAtriX hasta la beca ANFAIA. Extraído de notas de Discord y del repositorio (<code>updates.md</code>).</p>
-      <div class="mt-6 space-y-4">
-        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-          <p class="font-semibold">Inicio y setup</p>
-          <ul class="text-sm list-disc pl-5">
-            <li>Familiarización con Git, GitHub y VS Code. Investigación de Ollama, Continue, Qwen y agentes locales.</li>
-            <li>Revisión de proyectos similares para orientar el enfoque.</li>
-          </ul>
-        </div>
-        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-          <p class="font-semibold">Datos, EDA y correlaciones</p>
-          <ul class="text-sm list-disc pl-5">
-            <li>Unificación de variables en un único dataset; control de faltantes y errores.</li>
-            <li>Histogramas, boxplots, detección de atípicos; rehacer dataset depurado.</li>
-            <li>Matriz de correlación (numéricas); Cramér’s V y Kruskal‑Wallis para categóricas.</li>
-          </ul>
-        </div>
-        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-          <p class="font-semibold">Transformación y modelos</p>
-          <ul class="text-sm list-disc pl-5">
-            <li><code>05-transformacion_datos</code>: MinMaxScaler + OneHotEncoder.</li>
-            <li><code>06-train_test_and_models</code>: split, GBM y Random Forest; tuning de hiperparámetros; métricas; mapas.</li>
-            <li>Añadido SVM; RF mantiene el mejor desempeño.</li>
-          </ul>
-        </div>
-        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-          <p class="font-semibold">Explicabilidad y mapas</p>
-          <ul class="text-sm list-disc pl-5">
-            <li>PDPs en R y solución en Python tras incidencias (tamaño/plots vacíos).</li>
-            <li>Gradiente de altitud del río imputado con KDTree para completar mapas de PLA.</li>
-          </ul>
-        </div>
-        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-          <p class="font-semibold">Automatización (HRM‑style)</p>
-          <ul class="text-sm list-disc pl-5">
-            <li>Diseño de planificador LLM + ejecutores Python con LangChain/LangGraph.</li>
-            <li>Evaluación de opciones: Ollama (recomendada), LM Studio, Hugging Face 1‑click, servidor propio (descartado).</li>
-          </ul>
-        </div>
-        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-          <p class="font-semibold">Divulgación</p>
-          <ul class="text-sm list-disc pl-5">
-            <li>Artículo publicado en la web de Fundación MAtriX; preparación de versión para prensa.</li>
-            <li><em>Mensaje LinkedIn — Beca ANFAIA</em>: visibilización del impacto social del proyecto.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Recursos -->
-  <section id="recursos" class="py-12 sm:py-16 border-t border-slate-200/70 dark:border-slate-800">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-3 gap-6">
-      <div class="lg:col-span-2 prose prose-slate dark:prose-invert max-w-none">
-        <h2>Recursos</h2>
-        <ul>
-          <li><strong>Repositorio GitHub</strong>: <a id="repoLink" href="#" target="_blank" rel="noopener">(añadir URL)</a></li>
-          <li><strong>Artículo Fundación MAtriX</strong>: (enlace)</li>
-          <li><strong>Cuadernos</strong>: <code>modelo_AlphaEarth.ipynb</code>, <code>06-train_test_and_models.ipynb</code>, etc.</li>
-          <li><strong>Documentación</strong>: <code>README.md</code>, <code>updates.md</code></li>
-        </ul>
-        <h3>Créditos y apoyos</h3>
-        <p>Fundación MAtriX · Beca ANFAIA · Voluntariado y mentores.</p>
-      </div>
-      <aside class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-        <p class="font-semibold">Contacto</p>
-        <p class="text-sm mt-1">hugosuarezglez · (añadir email/redes)</p>
-        <p class="font-semibold mt-4">Cómo publicar en GitHub Pages</p>
-        <ol class="text-sm list-decimal pl-5 mt-1 space-y-1">
-          <li>Crea un repo llamado <code>hugosuarezglez.github.io</code> <em>o</em> usa el repo del proyecto.</li>
-          <li>Guarda este archivo como <code>index.html</code> en la raíz del repo.</li>
-          <li>En <em>Settings → Pages</em>, selecciona la rama (main) y carpeta <code>/root</code>.</li>
-          <li>Espera a que se construya y visita la URL indicada.</li>
-        </ol>
-      </aside>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="py-10 border-t border-slate-200/70 dark:border-slate-800">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500">
-      <p>© <span id="year"></span> Hugo Suárez — En&nbsp;Peu</p>
-      <p>Hecho con HTML + Tailwind. Licencia MIT (ajustar según necesidad).</p>
-    </div>
-  </footer>
-
+  <!-- Scripts -->
   <script>
-    // Año
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // Variables globales
+    let currentLang = 'es';
+    let currentSection = 'home';
 
-    // Tema
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const saved = localStorage.getItem('theme');
-    if ((saved === 'dark') || (!saved && prefersDark)) document.documentElement.classList.add('dark');
-    const toggle = document.getElementById('themeToggle');
-    const sun = document.getElementById('sun');
-    const moon = document.getElementById('moon');
-    const syncIcons = () => {
-      const dark = document.documentElement.classList.contains('dark');
-      sun.classList.toggle('hidden', !dark);
-      moon.classList.toggle('hidden', dark);
-    };
-    syncIcons();
-    toggle.addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
-      localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-      syncIcons();
+    // Inicializar
+    document.addEventListener('DOMContentLoaded', function() {
+      // Verificar tema guardado
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      }
     });
 
-    // Rellenar enlace al repo si se abre desde GitHub Pages (mejorable)
-    const gh = document.getElementById('gh');
-    const repoLink = document.getElementById('repoLink');
-    try {
-      const host = location.host; // e.g. hugosuarezglez.github.io
-      if (host.includes('github.io')) {
-        gh.href = `https://${host}`;
-        repoLink.href = `https://github.com/${host.split('.')[0]}/${host.split('.')[0]}.github.io`;
+    // Cambiar tema
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle('dark');
+      const isDark = document.documentElement.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+
+    // Cambiar idioma
+    function setLang(lang) {
+      currentLang = lang;
+      
+      // Actualizar botones de idioma
+      document.getElementById('btn-es').classList.remove('bg-sky-600', 'text-white');
+      document.getElementById('btn-en').classList.remove('bg-sky-600', 'text-white');
+      document.getElementById('btn-es').classList.add('hover:bg-slate-100', 'dark:hover:bg-slate-700');
+      document.getElementById('btn-en').classList.add('hover:bg-slate-100', 'dark:hover:bg-slate-700');
+      
+      document.getElementById('btn-' + lang).classList.add('bg-sky-600', 'text-white');
+      document.getElementById('btn-' + lang).classList.remove('hover:bg-slate-100', 'dark:hover:bg-slate-700');
+      
+      // Actualizar textos
+      document.querySelectorAll('[data-' + lang + ']').forEach(element => {
+        element.innerHTML = element.getAttribute('data-' + lang);
+      });
+      
+      // Actualizar idioma del documento
+      document.documentElement.lang = lang;
+    }
+
+    // Mostrar sección
+    function showSection(sectionId) {
+      // Ocultar todas las secciones
+      document.querySelectorAll('.section').forEach(section => {
+        section.classList.add('section-hidden');
+      });
+      
+      // Mostrar sección seleccionada
+      document.getElementById(sectionId).classList.remove('section-hidden');
+      
+      // Actualizar navegación activa
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('nav-active');
+      });
+      
+      const navElement = document.getElementById('nav-' + sectionId);
+      if (navElement) {
+        navElement.classList.add('nav-active');
       }
-    } catch (e) {}
+      
+      currentSection = sectionId;
+    }
+
+    // Mostrar detalles de En Peu
+    function showEnPeuDetails() {
+      showSection('enpeu-details');
+    }
   </script>
 </body>
 </html>
