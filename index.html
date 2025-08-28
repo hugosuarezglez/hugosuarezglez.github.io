@@ -1,688 +1,217 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hugo Suárez González – Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Portfolio – Hugo Suárez González</title>
+  <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.1/dist/showdown.min.js"></script>
   <style>
     body {
-      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans";
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+      transition: background 0.3s, color 0.3s;
     }
-    .section-hidden {
-      display: none;
+    .dark body {
+      background-color: #121212;
+      color: #e0e0e0;
     }
-    .nav-active {
-      color: #0ea5e9;
-      font-weight: 500;
+    header {
+      background-color: #333;
+      color: white;
+      padding: 1rem;
+      text-align: center;
     }
-    .category-card:hover {
-      transform: translateY(-2px);
-      transition: transform 0.2s ease-in-out;
+    header button {
+      margin: 0 5px;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .container {
+      width: 90%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 0;
+    }
+    .section {
+      margin-bottom: 2.5rem;
+    }
+    .section h2 {
+      border-bottom: 2px solid #333;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .dark .section h2 {
+      border-color: #bbb;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #333;
+      color: white;
+      margin-top: 2rem;
+    }
+    a {
+      color: #0056b3;
+      text-decoration: none;
+    }
+    .dark a {
+      color: #7dafff;
     }
   </style>
-</head>
-<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300">
-  <div class="flex min-h-screen max-w-7xl mx-auto">
-
-    <!-- Sidebar -->
-    <aside class="w-80 bg-white dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 p-8 flex flex-col items-center sticky top-0 h-screen">
-      <!-- Foto de perfil -->
-      <img src="imgs/perfil.jpg" alt="Hugo Suárez González" class="w-32 h-32 rounded-full mb-4 shadow-lg object-cover">
-      
-      <!-- Nombre -->
-      <h1 class="text-xl font-bold text-slate-800 dark:text-slate-200 text-center">Hugo Suárez González</h1>
-      
-      <!-- Descripción -->
-      <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 text-center">Data Scientist & Artist</p>
-
-      <!-- Botones de idioma y tema -->
-      <div class="flex gap-2 mb-8">
-        <button onclick="setLang('es')" id="btn-es" class="px-3 py-1 border border-slate-300 dark:border-slate-600 rounded text-sm bg-sky-600 text-white">ES</button>
-        <button onclick="setLang('en')" id="btn-en" class="px-3 py-1 border border-slate-300 dark:border-slate-600 rounded text-sm hover:bg-slate-100 dark:hover:bg-slate-700">EN</button>
-        <button onclick="toggleDarkMode()" class="px-3 py-1 border border-slate-300 dark:border-slate-600 rounded text-sm hover:bg-slate-100 dark:hover:bg-slate-700">
-          <span class="dark:hidden">🌙</span>
-          <span class="hidden dark:inline">☀️</span>
-        </button>
-      </div>
-
-      <!-- Navegación -->
-      <nav class="flex flex-col space-y-3 text-sm w-full">
-        <a href="#" onclick="showSection('home')" id="nav-home" class="nav-link nav-active p-2 rounded hover:bg-slate-100 dark:hover:bg-slate-700 text-center" 
-           data-en="Home" data-es="Inicio">Inicio</a>
-        <a href="#" onclick="showSection('categories')" id="nav-categories" class="nav-link p-2 rounded hover:bg-slate-100 dark:hover:bg-slate-700 text-center" 
-           data-en="Categories" data-es="Categorías">Categorías</a>
-        <a href="#" onclick="showSection('posts')" id="nav-posts" class="nav-link p-2 rounded hover:bg-slate-100 dark:hover:bg-slate-700 text-center" 
-           data-en="Posts" data-es="Posts">Posts</a>
-        <a href="#" onclick="showSection('resume')" id="nav-resume" class="nav-link p-2 rounded hover:bg-slate-100 dark:hover:bg-slate-700 text-center" 
-           data-en="Resume" data-es="Currículum">Currículum</a>
-      </nav>
-
-      <!-- Enlaces sociales -->
-      <div class="mt-auto pt-8 flex flex-col items-center space-y-2 text-sm">
-        <a href="https://github.com/hugosuarezglez" target="_blank" class="text-slate-600 dark:text-slate-400 hover:text-sky-600">GitHub</a>
-        <a href="https://www.linkedin.com/in/hugo-su%C3%A1rez-gonz%C3%A1lez-341208130/" target="_blank" class="text-slate-600 dark:text-slate-400 hover:text-sky-600">LinkedIn</a>
-        <a href="https://www.youtube.com/channel/UCXuUF7yy-JMzUpsWXKgVkxA" target="_blank" class="text-slate-600 dark:text-slate-400 hover:text-sky-600">YouTube</a>
-      </div>
-    </aside>
-
-    <!-- Contenido principal -->
-    <main class="flex-1 p-10">
-      
-       <!-- Home -->
-      <section id="home" class="section">
-        <div class="max-w-4xl">
-          <h2 class="text-3xl font-bold mb-6" data-en="About Me" data-es="Sobre mí">Sobre mí</h2>
-          <div class="prose prose-slate dark:prose-invert max-w-none">
-            
-            <p class="text-lg font-medium mb-6" 
-               data-en="Welcome to my portfolio!"
-               data-es="¡Bienvenide a mi portfolio!">
-               ¡Bienvenide a mi portfolio!
-            </p>
-
-            <p class="mb-4"
-               data-en="I am a  <strong>bioinformatician</strong> & <strong>data scientist</strong> working on Artificial Intelligence applied to natural hazards and medical research. I am also an <strong>emerging artist from Galicia (Spain)</strong>."
-               data-es="Soy <strong>bioinformático</strong>, <strong>científico de datos</strong> y <strong>artista emergente en Galicia</strong>, con experiencia en:">
-               Soy <strong>bioinformático</strong>, <strong>científico de datos</strong> y <strong>artista emergente en Galicia</strong>, con experiencia en:
-            </p>
-
-            <ul class="mb-8 space-y-2">
-              <li data-en="<strong>Artificial Intelligence applied to natural hazards</strong>, especially prediction of flood risk areas."
-                  data-es="<strong>Inteligencia Artificial aplicada a riesgos naturales</strong>, en especial la predicción de zonas de riesgo en inundaciones.">
-                  <strong>Inteligencia Artificial aplicada a riesgos naturales</strong>, en especial la predicción de zonas de riesgo en inundaciones.
-              </li>
-              <li data-en="<strong>Machine Learning</strong> for classification and predictive models."
-                  data-es="<strong>Machine Learning</strong> para clasificación y modelos predictivos.">
-                  <strong>Machine Learning</strong> para clasificación y modelos predictivos.
-              </li>
-              <li data-en="<strong>Science communication</strong> and AI education."
-                  data-es="<strong>Divulgación científica</strong> y formación en IA.">
-                  <strong>Divulgación científica</strong> y formación en IA.
-              </li>
-              <li data-en="<strong>Music and artistic projects</strong>: music production, multi-instrumentalist, singer-songwriter."
-                  data-es="<strong>Música y proyectos artísticos</strong>: producción musical, multiinstrumentista, cantautor.">
-                  <strong>Música y proyectos artísticos</strong>: producción musical, multiinstrumentista, cantautor.
-              </li>
-            </ul>
-
-            <hr class="my-8 border-slate-300 dark:border-slate-700">
-
-            <h3 class="text-xl font-semibold mb-4" data-en="Projects" data-es="Proyectos">Proyectos</h3>
-            
-            <div class="space-y-4 mb-8">
-              <div>
-                <h4 class="font-semibold">
-                  <a href="https://github.com/ANFAIA/En-Peu" target="_blank" class="text-sky-600 hover:text-sky-700"
-                     data-en="En Peu – AI for Flood Prediction"
-                     data-es="En Peu – IA para Predicción de Inundaciones">
-                     En Peu – IA para Predicción de Inundaciones
-                  </a>
-                </h4>
-                <p class="text-sm text-slate-600 dark:text-slate-400"
-                   data-en="Predictive model of flood depth in Paiporta, developed with machine learning as an alternative to traditional hydraulic models."
-                   data-es="Modelo predictivo de lámina de agua en Paiporta con IA, como alternativa a los modelos hidráulicos tradicionales.">
-                   Modelo predictivo de lámina de agua en Paiporta con IA, como alternativa a los modelos hidráulicos tradicionales.
-                </p>
-              </div>
-
-              <div>
-                <h4 class="font-semibold">
-                  <a href="https://github.com/hugosuarezglez/SVM_RCC" target="_blank" class="text-sky-600 hover:text-sky-700"
-                     data-en="Kidney Tumor Subtype Classification with Machine Learning"
-                     data-es="Clasificación de Subtipos de Tumores Renales con Machine Learning">
-                     Clasificación de Subtipos de Tumores Renales con Machine Learning
-                  </a>
-                </h4>
-                <p class="text-sm text-slate-600 dark:text-slate-400"
-                   data-en="Master's thesis applying ML models (SVM, RF, GBM) to classify kidney tumor subtypes."
-                   data-es="Trabajo de fin de máster: clasificación de subtipos de tumores renales con modelos de ML.">
-                   Trabajo de fin de máster: clasificación de subtipos de tumores renales con modelos de ML.
-                </p>
-              </div>
-            </div>
-
-            <hr class="my-8 border-slate-300 dark:border-slate-700">
-
-            <h3 class="text-xl font-semibold mb-4" data-en="Papers" data-es="Artículos">Artículos</h3>
-            
-            <div class="space-y-3 mb-8">
-              <div>
-                <h4 class="font-medium">
-                  <a href="https://fundacionmatrix.es/un-modelo-de-inteligencia-artificial-anticipa-la-magnitud-de-las-inundaciones-en-paiporta/" 
-                     target="_blank" class="text-sky-600 hover:text-sky-700"
-                     data-en="AI model anticipates the magnitude of floods in Paiporta (Fundación Matrix)"
-                     data-es="Un modelo de IA anticipa la magnitud de las inundaciones en Paiporta (Fundación Matrix)">
-                     Un modelo de IA anticipa la magnitud de las inundaciones en Paiporta (Fundación Matrix)
-                  </a>
-                </h4>
-              </div>
-
-              <div>
-                <h4 class="font-medium">
-                  <a href="https://pubmed.ncbi.nlm.nih.gov/37103393/" 
-                     target="_blank" class="text-sky-600 hover:text-sky-700"
-                     data-en="Genomic and transcriptomic analysis of C-type lectins (Marine Drugs)"
-                     data-es="Análisis genómico y transcriptómico de lectinas tipo C (Marine Drugs)">
-                     Análisis genómico y transcriptómico de lectinas tipo C (Marine Drugs)
-                  </a>
-                </h4>
-              </div>
-            </div>
-
-            <hr class="my-8 border-slate-300 dark:border-slate-700">
-
-            <h3 class="text-xl font-semibold mb-4" data-en="Music" data-es="Música">Música</h3>
-            
-            <div class="mb-8">
-              <h4 class="font-medium">
-                <a href="https://www.youtube.com/channel/UCXuUF7yy-JMzUpsWXKgVkxA" 
-                   target="_blank" class="text-sky-600 hover:text-sky-700"
-                   data-en="YouTube Channel"
-                   data-es="Canal de YouTube">
-                   Canal de YouTube
-                </a>
-              </h4>
-              <p class="text-sm text-slate-600 dark:text-slate-400"
-                 data-en="Acoustic guitar and voice. Original songs and covers."
-                 data-es="Guitarra acústica y voz. Canciones propias y versiones.">
-                 Guitarra acústica y voz. Canciones propias y versiones.
-              </p>
-            </div>
-
-            <hr class="my-8 border-slate-300 dark:border-slate-700">
-
-            <h3 class="text-xl font-semibold mb-4" data-en="Contact" data-es="Contacto">Contacto</h3>
-            
-            <div class="space-y-2 mb-8">
-              <p><strong>GitHub:</strong> <a href="https://github.com/hugosuarezglez" target="_blank" class="text-sky-600 hover:text-sky-700">@hugosuarezglez</a></p>
-              <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/hugo-su%C3%A1rez-gonz%C3%A1lez-341208130/" target="_blank" class="text-sky-600 hover:text-sky-700">Hugo Suárez González</a></p>
-              <p><strong>Email:</strong> <a href="mailto:albsgonz@hotmail.com" class="text-sky-600 hover:text-sky-700">albsgonz@hotmail.com</a></p>
-            </div>
-
-            <hr class="my-8 border-slate-300 dark:border-slate-700">
-
-            <p class="text-center font-medium text-slate-700 dark:text-slate-300"
-               data-en="This portfolio brings together my <strong>AI research projects</strong>, my <strong>data science experience</strong>, and my <strong>artistic work</strong>."
-               data-es="Este portfolio reúne mis <strong>proyectos de IA</strong>, mi <strong>experiencia en ciencia de datos</strong> y mi <strong>trabajo artístico</strong>.">
-               Este portfolio reúne mis <strong>proyectos de IA</strong>, mi <strong>experiencia en ciencia de datos</strong> y mi <strong>trabajo artístico</strong>.
-            </p>
-
-          </div>
-        </div>
-      </section>
-
-      
-      <!-- Categorías -->
-      <section id="categories" class="section section-hidden">
-        <h2 class="text-3xl font-bold mb-8" data-en="Categories" data-es="Categorías">Categorías</h2>
-        <div class="grid grid-cols-2 gap-8 max-w-4xl">
-
-          <!-- Proyectos -->
-          <div onclick="showSection('projects')" class="category-card cursor-pointer group">
-            <div class="bg-white dark:bg-slate-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-              <img src="imgs/article.png" alt="Proyectos" class="w-full h-48 object-cover group-hover:opacity-90 transition-opacity">
-              <div class="p-4 text-center">
-                <h3 class="text-lg font-semibold" data-en="Projects" data-es="Proyectos">Proyectos</h3>
-              </div>
-            </div>
-          </div>
-
-          <!-- Artículos -->
-          <div onclick="showSection('articles')" class="category-card cursor-pointer group">
-            <div class="bg-white dark:bg-slate-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-              <img src="imgs/posts.png" alt="Artículos" class="w-full h-48 object-cover group-hover:opacity-90 transition-opacity">
-              <div class="p-4 text-center">
-                <h3 class="text-lg font-semibold" data-en="Articles" data-es="Artículos">Artículos</h3>
-              </div>
-            </div>
-          </div>
-
-          <!-- Música -->
-          <div onclick="showSection('music')" class="category-card cursor-pointer group">
-            <div class="bg-white dark:bg-slate-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-              <img src="imgs/music.png" alt="Música" class="w-full h-48 object-cover group-hover:opacity-90 transition-opacity">
-              <div class="p-4 text-center">
-                <h3 class="text-lg font-semibold" data-en="Music" data-es="Música">Música</h3>
-              </div>
-            </div>
-          </div>
-
-          <!-- Contacto -->
-          <div onclick="showSection('contact')" class="category-card cursor-pointer group">
-            <div class="bg-white dark:bg-slate-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-              <img src="imgs/contact.png" alt="Contacto" class="w-full h-48 object-cover group-hover:opacity-90 transition-opacity">
-              <div class="p-4 text-center">
-                <h3 class="text-lg font-semibold" data-en="Contact" data-es="Contacto">Contacto</h3>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Proyectos -->
-      <section id="projects" class="section section-hidden">
-        <div class="flex items-center mb-8">
-          <button onclick="showSection('categories')" class="mr-4 text-slate-600 dark:text-slate-400 hover:text-sky-600">← 
-            <span data-en="Back" data-es="Volver">Volver</span>
-          </button>
-          <h2 class="text-3xl font-bold" data-en="Projects" data-es="Proyectos">Proyectos</h2>
-        </div>
-        
-        <div class="grid gap-8 max-w-4xl">
-          <!-- En Peu -->
-          <div class="bg-white dark:bg-slate-800 rounded-lg shadow-md p-6">
-            <h3 class="text-xl font-semibold mb-3" data-en="En Peu – AI for Flood Prediction" data-es="En Peu – IA para Predicción de Inundaciones">En Peu – IA para Predicción de Inundaciones</h3>
-            <p class="text-slate-600 dark:text-slate-400 mb-4" 
-               data-en="AI project to predict flood height (PLA) in urban and peri-urban environments. Uses machine learning models like Random Forest and XGBoost with geospatial variables."
-               data-es="Proyecto de IA para predecir la cota de inundación (PLA) en entornos urbanos y periurbanos. Utiliza modelos de machine learning como Random Forest y XGBoost con variables geoespaciales.">
-               Proyecto de IA para predecir la cota de inundación (PLA) en entornos urbanos y periurbanos. Utiliza modelos de machine learning como Random Forest y XGBoost con variables geoespaciales.
-            </p>
-            <div class="flex gap-3">
-              <a href="https://github.com/ANFAIA/En-Peu" target="_blank" class="inline-flex items-center px-4 py-2 bg-sky-600 text-white rounded-lg hover:bg-sky-700 transition-colors">
-                <span data-en="GitHub Repository" data-es="Repositorio GitHub">Repositorio GitHub</span>
-              </a>
-              <button onclick="showEnPeuDetails()" class="inline-flex items-center px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
-                <span data-en="View Details" data-es="Ver Detalles">Ver Detalles</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- SVM_RCC -->
-          <div class="bg-white dark:bg-slate-800 rounded-lg shadow-md p-6">
-            <h3 class="text-xl font-semibold mb-3" data-en="SVM_RCC – Kidney Tumor Classification" data-es="SVM_RCC – Clasificación de Tumores Renales">SVM_RCC – Clasificación de Tumores Renales</h3>
-            <p class="text-slate-600 dark:text-slate-400 mb-4"
-               data-en="Master's thesis project: Classification of kidney tumor subtypes using Machine Learning. Applied SVM and other algorithms to medical genomic data."
-               data-es="Proyecto de Trabajo de Fin de Máster: Clasificación de subtipos de tumor de riñón usando Machine Learning. Aplicación de SVM y otros algoritmos a datos genómicos médicos.">
-               Proyecto de Trabajo de Fin de Máster: Clasificación de subtipos de tumor de riñón usando Machine Learning. Aplicación de SVM y otros algoritmos a datos genómicos médicos.
-            </p>
-            <a href="https://github.com/hugosuarezglez/SVM_RCC" target="_blank" class="inline-flex items-center px-4 py-2 bg-sky-600 text-white rounded-lg hover:bg-sky-700 transition-colors">
-              <span data-en="GitHub Repository" data-es="Repositorio GitHub">Repositorio GitHub</span>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Detalles En Peu -->
-      <section id="enpeu-details" class="section section-hidden">
-        <div class="flex items-center mb-8">
-          <button onclick="showSection('projects')" class="mr-4 text-slate-600 dark:text-slate-400 hover:text-sky-600">← 
-            <span data-en="Back to Projects" data-es="Volver a Proyectos">Volver a Proyectos</span>
-          </button>
-          <h2 class="text-3xl font-bold">En Peu – <span data-en="AI for Flood Prediction" data-es="IA para Predicción de Inundaciones">IA para Predicción de Inundaciones</span></h2>
-        </div>
-        
-        <!-- Hero del proyecto -->
-        <div class="max-w-6xl mb-16 grid lg:grid-cols-2 gap-10 items-center">
-          <div>
-            <p class="text-lg text-slate-600 dark:text-slate-300 mb-6" 
-               data-en="Personal portfolio of the AI project for flood height prediction (PLA) in urban and peri-urban environments. Documents from my beginnings at Fundación MAtriX to the ANFAIA scholarship."
-               data-es="Portfolio personal del proyecto de IA para predicción de cota de inundación (PLA) en entornos urbanos y periurbanos. Documenta desde mis inicios en la Fundación MAtriX hasta la beca ANFAIA.">
-               Portfolio personal del proyecto de IA para predicción de cota de inundación (PLA) en entornos urbanos y periurbanos. Documenta desde mis inicios en la Fundación MAtriX hasta la beca ANFAIA.
-            </p>
-            <div class="flex flex-wrap gap-3 mb-6">
-              <a href="#enpeu-resultados" onclick="scrollToEnPeuSection('enpeu-resultados')" class="inline-flex h-11 items-center rounded-xl bg-sky-600 text-white px-4 text-sm font-semibold shadow hover:bg-sky-700">
-                <span data-en="View Results" data-es="Ver resultados">Ver resultados</span>
-              </a>
-              <a href="https://github.com/ANFAIA/En-Peu" target="_blank" class="inline-flex h-11 items-center rounded-xl border border-slate-300 dark:border-slate-700 px-4 text-sm font-semibold hover:bg-slate-100 dark:hover:bg-slate-800">
-                <span data-en="Resources & docs" data-es="Recursos & docs">Recursos & docs</span>
-              </a>
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-slate-700">@hugosuarezglez</span>
-            </div>
-          </div>
-          <div class="relative">
-            <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-sky-50 to-slate-50 dark:from-sky-900/10 dark:to-slate-900/10 p-6 shadow-inner">
-              <ul class="grid grid-cols-2 gap-3 text-sm">
-                <li class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-                  <p class="font-semibold" data-en="Best Model" data-es="Mejor modelo">Mejor modelo</p>
-                  <p class="text-slate-600 dark:text-slate-300">Random Forest</p>
-                </li>
-                <li class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-                  <p class="font-semibold" data-en="Libraries" data-es="Librerías">Librerías</p>
-                  <p class="text-slate-600 dark:text-slate-300">scikit‑learn, XGBoost, SciPy</p>
-                </li>
-                <li class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-                  <p class="font-semibold">EDA</p>
-                  <p class="text-slate-600 dark:text-slate-300">Boxplots, histos, outliers</p>
-                </li>
-                <li class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-                  <p class="font-semibold" data-en="Explainability" data-es="Explicabilidad">Explicabilidad</p>
-                  <p class="text-slate-600 dark:text-slate-300">PDPs · Importancias</p>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- Acerca del proyecto -->
-        <div class="max-w-4xl mb-12 bg-white dark:bg-slate-800 rounded-lg shadow-sm p-8">
-          <h3 class="text-2xl font-semibold mb-4" data-en="About the Project" data-es="Acerca del proyecto">Acerca del proyecto</h3>
-          <div class="prose prose-slate dark:prose-invert max-w-none">
-            <p data-en="En Peu is a data science initiative applied to flood risk management. The objective is to predict flood water level (PLA) from geospatial and urban variables, generate interpretable maps and offer a reproducible tool for municipalities and citizens."
-               data-es="En Peu es una iniciativa de ciencia de datos aplicada a la gestión del riesgo de inundaciones. El objetivo es predecir la cota de lámina de agua (PLA) a partir de variables geoespaciales y urbanas, generar mapas interpretables y ofrecer una herramienta reproducible para ayuntamientos y ciudadanía.">
-               <strong>En Peu</strong> es una iniciativa de ciencia de datos aplicada a la gestión del riesgo de inundaciones. El objetivo es <em>predecir la cota de lámina de agua (PLA)</em> a partir de variables geoespaciales y urbanas, generar mapas interpretables y ofrecer una herramienta reproducible para ayuntamientos y ciudadanía.
-            </p>
-            <p data-en="This portfolio gathers repository documentation, notebooks, scripts, outreach articles and technical notes from my beginnings at Fundación MAtriX to the ANFAIA scholarship, going through research on classical models (RF/GBM/SVM) and more advanced proposals like AlphaEarth embeddings and an HRM-style orchestrator."
-               data-es="Este portfolio recoge la documentación del repositorio, cuadernos, scripts, artículos divulgativos y notas técnicas desde mis inicios en la Fundación MAtriX hasta la beca ANFAIA, pasando por la investigación de modelos clásicos (RF/GBM/SVM) y propuestas más avanzadas como embeddings de AlphaEarth y un orquestador de tipo HRM‑style.">
-               Este portfolio recoge la documentación del repositorio, cuadernos, scripts, artículos divulgativos y notas técnicas desde mis inicios en la <strong>Fundación MAtriX</strong> hasta la <strong>beca ANFAIA</strong>, pasando por la investigación de modelos clásicos (RF/GBM/SVM) y propuestas más avanzadas como embeddings de <em>AlphaEarth</em> y un orquestador de tipo <em>HRM‑style</em>.
-            </p>
-          </div>
-        </div>
-
-        <!-- Variables y datos -->
-        <div class="mb-12">
-          <div class="mb-8">
-            <h3 class="text-2xl font-semibold mb-2" data-en="Data & Variables" data-es="Datos & variables">Datos & variables</h3>
-            <p class="text-slate-600 dark:text-slate-300" data-en="Variables present in the CSV files and their meaning." data-es="Variables presentes en los CSV y su significado.">Variables presentes en los CSV y su significado.</p>
-          </div>
-          <div class="grid md:grid-cols-2 gap-6 max-w-6xl">
-            <div class="space-y-3 text-sm leading-6">
-              <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-                <p><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-slate-700">A</span> <strong data-en="Altitude" data-es="Altitud">Altitud</strong>. <span data-en="Numeric: elevation above sea level." data-es="Numérica: elevación s.n.m.">Numérica: elevación s.n.m.</span></p>
-              </div>
-              <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-                <p><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-slate-700">AC</span> <strong data-en="Street Width" data-es="Anchura de calles">Anchura de calles</strong>. <span data-en="Categorical → numeric by mean value of range." data-es="Categórica → numérica por valor medio del rango.">Categórica → numérica por valor medio del rango.</span></p>
-              </div>
-              <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-                <p><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-slate-700">B</span> <strong data-en="Ravine" data-es="Barranco">Barranco</strong>. <span data-en="Binary: 0 = channel, 1 = no channel." data-es="Binaria: 0 = cauce, 1 = no cauce.">Binaria: 0 = cauce, 1 = no cauce.</span></p>
-              </div>
-              <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-                <p><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-slate-700">CICCB</span> <span data-en="Channel curvature · accumulation capacity. Numeric." data-es="Curvatura del cauce · capacidad de acumulación. Numérica.">Curvatura del cauce · capacidad de acumulación. Numérica.</span></p>
-              </div>
-              <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-                <p><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-slate-700">CIB</span> <span data-en="Ravine flood capacity by section/situation. Numeric." data-es="Capacidad de inundación del barranco por sección/situación. Numérica.">Capacidad de inundación del barranco por sección/situación. Numérica.</span></p>
-              </div>
-            </div>
-            <div class="space-y-3 text-sm leading-6">
-              <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-                <p><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-slate-700">CUS</span> <strong data-en="Land Use" data-es="Uso del suelo">Uso del suelo</strong>. <span data-en="Categorical: 1 Crops · 2 Buildings · 3 Bare soil · 4 Green areas · 5 Road." data-es="Categórica: 1 Cultivos · 2 Edificios · 3 Suelo desnudo · 4 Zonas verdes · 5 Vial.">Categórica: 1 Cultivos · 2 Edificios · 3 Suelo desnudo · 4 Zonas verdes · 5 Vial.</span></p>
-              </div>
-              <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-                <p><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-slate-700">DBB</span> <span data-en="Distance to channel edge (m). Numeric." data-es="Distancia al borde del cauce (m). Numérica.">Distancia al borde del cauce (m). Numérica.</span></p>
-              </div>
-              <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-                <p><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-slate-700">DOB</span> <span data-en="Distance to channel obstacles (m). Numeric." data-es="Distancia a obstáculos en el cauce (m). Numérica.">Distancia a obstáculos en el cauce (m). Numérica.</span></p>
-              </div>
-              <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-                <p><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-slate-700">OC</span> <strong data-en="Street Orientation" data-es="Orientación calles">Orientación calles</strong>. <span data-en="Categorical: 1 Oblique · 2 Parallel · 3 Perpendicular · 4 Others." data-es="Categórica: 1 Oblicua · 2 Paralela · 3 Perpendicular · 4 Otras.">Categórica: 1 Oblicua · 2 Paralela · 3 Perpendicular · 4 Otras.</span></p>
-              </div>
-              <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-                <p><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-slate-700">P</span> <strong data-en="Slope" data-es="Pendiente">Pendiente</strong> (%). <span data-en="Numeric." data-es="Numérica.">Numérica.</span></p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Metodología -->
-        <div class="mb-12 max-w-6xl grid lg:grid-cols-2 gap-10 items-start">
-          <div class="prose prose-slate dark:prose-invert max-w-none">
-            <h3 class="text-2xl font-semibold" data-en="Methodology and Workflow" data-es="Metodología y flujo de trabajo">Metodología y flujo de trabajo</h3>
-            <ol>
-              <li><strong data-en="Ingestion and cleaning" data-es="Ingesta y limpieza">Ingesta y limpieza</strong>: <span data-en="CSV combination, missing data control, outlier cleanup." data-es="combinación de CSV, control de faltantes, depuración de outliers.">combinación de CSV, control de faltantes, depuración de outliers.</span></li>
-              <li><strong>EDA</strong>: <span data-en="histograms and boxplots; correlation matrix for numeric variables; Cramér's V (cat↔cat) and Kruskal‑Wallis (cat↔num) without assuming normality." data-es="histogramas y boxplots; matriz de correlación para numéricas; Cramér's V (cat↔cat) y Kruskal‑Wallis (cat↔num) sin asumir normalidad.">histogramas y boxplots; matriz de correlación para numéricas; <em>Cramér's V</em> (cat↔cat) y <em>Kruskal‑Wallis</em> (cat↔num) sin asumir normalidad.</span></li>
-              <li><strong data-en="Transformations" data-es="Transformaciones">Transformaciones</strong>: <code>MinMaxScaler</code> <span data-en="for numeric and" data-es="para numéricas y">para numéricas y</span> <code>OneHotEncoder</code> <span data-en="for categorical." data-es="para categóricas.">para categóricas.</span></li>
-              <li><strong data-en="Partition" data-es="Partición">Partición</strong>: <code>train/test</code> con <code>scikit‑learn</code>.</li>
-              <li><strong data-en="Modeling" data-es="Modelado">Modelado</strong>: <em>Random Forest</em>, <em>Gradient Boosting</em>, <em>SVM</em> <span data-en="and tests with" data-es="y pruebas con">y pruebas con</span> <em>XGBoost</em>. <span data-en="Hyperparameter search." data-es="Búsqueda de hiperparámetros.">Búsqueda de hiperparámetros.</span></li>
-              <li><strong data-en="Evaluation" data-es="Evaluación">Evaluación</strong>: <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-slate-700">R²</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-slate-700">RMSE</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-slate-700">MAE</span>. <span data-en="Comparative plots and observed vs predicted scatter." data-es="Gráficos comparativos y dispersión observado vs predicho.">Gráficos comparativos y dispersión observado vs predicho.</span></li>
-              <li><strong data-en="Maps" data-es="Mapas">Mapas</strong>: <span data-en="Observed vs predicted PLA and absolute error map. Altitude imputation in channels with" data-es="PLA observada vs predicha y mapa de error absoluto. Imputación de altitud en cauces con">PLA observada vs predicha y mapa de error absoluto. Imputación de altitud en cauces con</span> <code>KDTree</code> (SciPy).</li>
-              <li><strong data-en="Explainability" data-es="Explicabilidad">Explicabilidad</strong>: <em>Partial Dependence Plots (PDPs)</em> <span data-en="for key numeric variables; variable importance." data-es="para variables numéricas clave; importancias de variables.">para variables numéricas clave; importancias de variables.</span></li>
-              <li><strong data-en="Spatial dimension" data-es="Dimensión espacial">Dimensión espacial</strong> <span data-en="(under exploration): spatial cross-validation, XY coordinates, neighbor averages, flows." data-es="(en exploración): validación cruzada espacial, coordenadas XY, promedios de vecinos, flujos.">(en exploración): validación cruzada espacial, coordenadas XY, promedios de vecinos, flujos.</span></li>
-            </ol>
-          </div>
-          <div class="space-y-4">
-
-
-
-            
-            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-              <p class="font-semibold mb-2" data-en="Tech Stack" data-es="Stack técnico">Stack técnico</p>
-              <p class="text-sm">Python, R, scikit‑learn, XGBoost, SciPy, NumPy, pandas, Matplotlib; GIS; Colab; Git/GitHub; VS Code.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Resultados -->
-        <div id="enpeu-resultados" class="mb-12">
-          <h3 class="text-2xl font-semibold mb-4" data-en="Results" data-es="Resultados">Resultados</h3>
-          <p class="mt-2 text-slate-600 dark:text-slate-300 mb-6" data-en="Model comparison and key visualizations." data-es="Comparativa de modelos y visualizaciones clave.">Comparativa de modelos y visualizaciones clave.</p>
-          <div class="grid lg:grid-cols-3 gap-6">
-            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-              <p class="font-semibold" data-en="Metrics (example)" data-es="Métricas (ejemplo)">Métricas (ejemplo)</p>
-              <ul class="text-sm mt-2 space-y-1">
-                <li>Random Forest — R²: <strong>0.9621</strong> · RMSE: <strong>0.1267</strong> · MAE: <strong>0.0456</strong></li>
-                <li>GBM — R²: 0.8587 · RMSE: 0.2446 · MAE: 0.1570</li>
-                <li>SVM — R²: 0.7844 · RMSE: 0.3021 · MAE: 0.1852</li>
-              </ul>
-              
-            </div>
-            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-              <p class="font-semibold" data-en="Charts" data-es="Gráficas">Gráficas</p>
-              <ul class="text-sm mt-2 list-disc pl-5">
-                <li data-en="Scatter: predicted vs observed" data-es="Dispersión: predicho vs observado">Dispersión: predicho vs observado</li>
-                <li data-en="Comparative R² / RMSE / MAE" data-es="Comparativa R² / RMSE / MAE">Comparativa R² / RMSE / MAE</li>
-                <li data-en="PDPs of key variables" data-es="PDPs de variables clave">PDPs de variables clave</li>
-              </ul>
-            </div>
-            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-              <p class="font-semibold" data-en="Maps" data-es="Mapas">Mapas</p>
-              <ul class="text-sm mt-2 list-disc pl-5">
-                <li data-en="Observed vs predicted PLA (test)" data-es="PLA observada vs predicha (test)">PLA observada vs predicha (test)</li>
-                <li data-en="Absolute error map" data-es="Mapa de error absoluto">Mapa de error absoluto</li>
-                <li data-en="Channel altitude gradient (KDTree)" data-es="Gradiente de altitud en cauce (KDTree)">Gradiente de altitud en cauce (KDTree)</li>
-              </ul>
-            </div>
-
-      <!-- Artículos -->
-      <section id="articles" class="section section-hidden">
-        <div class="flex items-center mb-8">
-          <button onclick="showSection('categories')" class="mr-4 text-slate-600 dark:text-slate-400 hover:text-sky-600">← 
-            <span data-en="Back" data-es="Volver">Volver</span>
-          </button>
-          <h2 class="text-3xl font-bold" data-en="Articles" data-es="Artículos">Artículos</h2>
-        </div>
-        
-        <div class="space-y-6 max-w-4xl">
-          <div class="bg-white dark:bg-slate-800 rounded-lg shadow-md p-6">
-            <h3 class="text-lg font-semibold mb-2">
-              <a href="https://fundacionmatrix.es/un-modelo-de-inteligencia-artificial-anticipa-la-magnitud-de-las-inundaciones-en-paiporta/" 
-                 target="_blank" class="text-sky-600 hover:text-sky-700">
-                 <span data-en="AI model anticipates the magnitude of floods in Paiporta" 
-                       data-es="Un modelo de inteligencia artificial anticipa la magnitud de las inundaciones en Paiporta">
-                   Un modelo de inteligencia artificial anticipa la magnitud de las inundaciones en Paiporta
-                 </span>
-              </a>
-            </h3>
-            <p class="text-slate-600 dark:text-slate-400" 
-               data-en="Article published in Fundación MAtriX about the En Peu project."
-               data-es="Artículo publicado en Fundación MAtriX sobre el proyecto En Peu.">
-               Artículo publicado en Fundación MAtriX sobre el proyecto En Peu.
-            </p>
-          </div>
-          
-          <div class="bg-white dark:bg-slate-800 rounded-lg shadow-md p-6">
-            <h3 class="text-lg font-semibold mb-2">
-              <a href="https://pubmed.ncbi.nlm.nih.gov/37103393/" 
-                 target="_blank" class="text-sky-600 hover:text-sky-700">
-                 <span data-en="Genomic and transcriptomic analysis of C-type lectins" 
-                       data-es="Análisis genómico y transcriptómico de lectinas tipo C">
-                   Análisis genómico y transcriptómico de lectinas tipo C
-                 </span>
-              </a>
-            </h3>
-            <p class="text-slate-600 dark:text-slate-400"
-               data-en="Scientific publication in PubMed about genomic analysis."
-               data-es="Publicación científica en PubMed sobre análisis genómico.">
-               Publicación científica en PubMed sobre análisis genómico.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Música -->
-      <section id="music" class="section section-hidden">
-        <div class="flex items-center mb-8">
-          <button onclick="showSection('categories')" class="mr-4 text-slate-600 dark:text-slate-400 hover:text-sky-600">← 
-            <span data-en="Back" data-es="Volver">Volver</span>
-          </button>
-          <h2 class="text-3xl font-bold" data-en="Music" data-es="Música">Música</h2>
-        </div>
-        
-        <div class="max-w-4xl">
-          <div class="bg-white dark:bg-slate-800 rounded-lg shadow-md p-6">
-            <h3 class="text-xl font-semibold mb-4" data-en="Acoustic Guitar & Voice" data-es="Guitarra Acústica y Voz">Guitarra Acústica y Voz</h3>
-            <p class="text-slate-600 dark:text-slate-400 mb-4"
-               data-en="Singer-songwriter exploring acoustic sounds and original compositions."
-               data-es="Cantautor explorando sonidos acústicos y composiciones originales.">
-               Cantautor explorando sonidos acústicos y composiciones originales.
-            </p>
-            <a href="https://www.youtube.com/channel/UCXuUF7yy-JMzUpsWXKgVkxA" target="_blank" 
-               class="inline-flex items-center px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
-               <span data-en="YouTube Channel" data-es="Canal de YouTube">Canal de YouTube</span>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Posts -->
-      <section id="posts" class="section section-hidden">
-        <h2 class="text-3xl font-bold mb-6" data-en="Posts" data-es="Posts">Posts</h2>
-        <div class="max-w-4xl">
-          <p class="text-slate-600 dark:text-slate-400 mb-8"
-             data-en="Here I share blog-style posts, reflections, and ideas also published on LinkedIn."
-             data-es="Aquí comparto pequeñas entradas de blog, reflexiones e ideas que también publico en LinkedIn.">
-             Aquí comparto pequeñas entradas de blog, reflexiones e ideas que también publico en LinkedIn.
-          </p>
-          
-          <!-- Placeholder para posts futuros -->
-          <div class="bg-white dark:bg-slate-800 rounded-lg shadow-md p-6">
-            <p class="text-slate-500 dark:text-slate-400 italic"
-               data-en="Posts coming soon..."
-               data-es="Posts próximamente...">
-               Posts próximamente...
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Resume -->
-      <section id="resume" class="section section-hidden">
-        <h2 class="text-3xl font-bold mb-6" data-en="Resume" data-es="Currículum">Currículum</h2>
-        <div class="max-w-4xl">
-          <div class="bg-white dark:bg-slate-800 rounded-lg shadow-md p-6">
-            <h3 class="text-xl font-semibold mb-4" data-en="Download CV" data-es="Descargar CV">Descargar CV</h3>
-            <p class="text-slate-600 dark:text-slate-400 mb-4"
-               data-en="Download my complete resume in PDF format."
-               data-es="Descarga mi currículum completo en formato PDF.">
-               Descarga mi currículum completo en formato PDF.
-            </p>
-            <a href="docs/CV_Hugo_Suarez.pdf" target="_blank" 
-               class="inline-flex items-center px-4 py-2 bg-slate-600 text-white rounded-lg hover:bg-slate-700 transition-colors">
-               📄 <span class="ml-2" data-en="Download CV (PDF)" data-es="Descargar CV (PDF)">Descargar CV (PDF)</span>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Contacto -->
-      <section id="contact" class="section section-hidden">
-        <div class="flex items-center mb-8">
-          <button onclick="showSection('categories')" class="mr-4 text-slate-600 dark:text-slate-400 hover:text-sky-600">← 
-            <span data-en="Back" data-es="Volver">Volver</span>
-          </button>
-          <h2 class="text-3xl font-bold" data-en="Contact" data-es="Contacto">Contacto</h2>
-        </div>
-        
-        <div class="max-w-4xl">
-          <div class="bg-white dark:bg-slate-800 rounded-lg shadow-md p-6">
-            <h3 class="text-xl font-semibold mb-4" data-en="Get in Touch" data-es="Ponte en Contacto">Ponte en Contacto</h3>
-            <div class="space-y-3">
-              <p><strong>GitHub:</strong> <a href="https://github.com/hugosuarezglez" target="_blank" class="text-sky-600 hover:text-sky-700">@hugosuarezglez</a></p>
-              <p><strong>Email:</strong> <span class="text-slate-600 dark:text-slate-400">[añadir si es público]</span></p>
-              <p><strong>LinkedIn:</strong> <span class="text-slate-600 dark:text-slate-400">[añadir enlace]</span></p>
-              <p><strong>YouTube:</strong> <a href="https://www.youtube.com/channel/UCXuUF7yy-JMzUpsWXKgVkxA" target="_blank" class="text-sky-600 hover:text-sky-700">Canal de Música</a></p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-  </div>
-
-  <!-- Scripts -->
   <script>
-    // Variables globales
-    let currentLang = 'es';
-    let currentSection = 'home';
-
-    // Inicializar
-    document.addEventListener('DOMContentLoaded', function() {
-      // Verificar tema guardado
-      const savedTheme = localStorage.getItem('theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      
-      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-        document.documentElement.classList.add('dark');
-      }
-    });
-
-    // Cambiar tema
+    // --- Dark Mode ---
     function toggleDarkMode() {
       document.documentElement.classList.toggle('dark');
-      const isDark = document.documentElement.classList.contains('dark');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      const enabled = document.documentElement.classList.contains('dark');
+      localStorage.setItem('darkMode', enabled ? 'enabled' : 'disabled');
     }
+    window.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('darkMode');
+      if (saved === 'enabled') document.documentElement.classList.add('dark');
+    });
 
-    // Cambiar idioma
-    function setLang(lang) {
-      currentLang = lang;
-      
-      // Actualizar botones de idioma
-      document.getElementById('btn-es').classList.remove('bg-sky-600', 'text-white');
-      document.getElementById('btn-en').classList.remove('bg-sky-600', 'text-white');
-      document.getElementById('btn-es').classList.add('hover:bg-slate-100', 'dark:hover:bg-slate-700');
-      document.getElementById('btn-en').classList.add('hover:bg-slate-100', 'dark:hover:bg-slate-700');
-      
-      document.getElementById('btn-' + lang).classList.add('bg-sky-600', 'text-white');
-      document.getElementById('btn-' + lang).classList.remove('hover:bg-slate-100', 'dark:hover:bg-slate-700');
-      
-      // Actualizar textos
-      document.querySelectorAll('[data-' + lang + ']').forEach(element => {
-        element.innerHTML = element.getAttribute('data-' + lang);
+    // --- Multi-idioma ---
+    function changeLanguage(lang) {
+      const elements = document.querySelectorAll('[data-lang]');
+      elements.forEach(el => {
+        el.style.display = el.getAttribute('data-lang') === lang ? 'block' : 'none';
       });
-      
-      // Actualizar idioma del documento
-      document.documentElement.lang = lang;
+      localStorage.setItem('lang', lang);
     }
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('lang') || 'es';
+      changeLanguage(savedLang);
+    });
 
-    // Mostrar sección
-    function showSection(sectionId) {
-      // Ocultar todas las secciones
-      document.querySelectorAll('.section').forEach(section => {
-        section.classList.add('section-hidden');
-      });
-      
-      // Mostrar sección seleccionada
-      document.getElementById(sectionId).classList.remove('section-hidden');
-      
-      // Actualizar navegación activa
-      document.querySelectorAll('.nav-link').forEach(link => {
-        link.classList.remove('nav-active');
-      });
-      
-      const navElement = document.getElementById('nav-' + sectionId);
-      if (navElement) {
-        navElement.classList.add('nav-active');
+    // --- Cargar Posts dinámicamente ---
+    async function loadPosts() {
+      const postsContainer = document.getElementById('posts');
+      try {
+        const repo = "hugosuarezglez/hugosuarezglez.github.io"; // cambia si el repo es otro
+        const res = await fetch(`https://api.github.com/repos/${repo}/contents/posts`);
+        if (!res.ok) {
+          postsContainer.innerHTML = "<p>No se encontraron artículos.</p>";
+          return;
+        }
+        const files = await res.json();
+        const mdFiles = files.filter(f => f.name.endsWith(".md")).sort((a,b)=>b.name.localeCompare(a.name));
+        const converter = new showdown.Converter();
+        for (let file of mdFiles) {
+          const raw = await fetch(file.download_url).then(r => r.text());
+          const html = converter.makeHtml(raw);
+          const article = document.createElement("article");
+          article.innerHTML = `<h3>${file.name.replace(".md","")}</h3>${html}`;
+          postsContainer.appendChild(article);
+        }
+      } catch (e) {
+        postsContainer.innerHTML = "<p>Error al cargar los posts.</p>";
       }
-      
-      currentSection = sectionId;
     }
-
-    // Mostrar detalles de En Peu
-    function showEnPeuDetails() {
-      showSection('enpeu-details');
-    }
+    window.addEventListener('DOMContentLoaded', loadPosts);
   </script>
+</head>
+<body>
+  <header>
+    <h1>Portfolio – Hugo Suárez González</h1>
+    <button onclick="toggleDarkMode()">🌓</button>
+    <button onclick="changeLanguage('es')">Español</button>
+    <button onclick="changeLanguage('en')">English</button>
+  </header>
+
+  <div class="container">
+
+    <!-- INTRO -->
+    <div class="section" data-lang="es">
+      <h2>Bienvenide a mi portfolio</h2>
+      <p>Soy <strong>científico de datos</strong> y <strong>artista emergente en Galicia</strong>, con experiencia en:</p>
+      <ul>
+        <li>Inteligencia Artificial aplicada a riesgos naturales, en especial la predicción de zonas de riesgo en inundaciones.</li>
+        <li>Machine Learning para clasificación y modelos predictivos.</li>
+        <li>Divulgación científica y formación en IA.</li>
+        <li>Música y proyectos artísticos, producción musical, multiinstrumentista, cantante.</li>
+      </ul>
+    </div>
+
+    <div class="section" data-lang="en" style="display:none;">
+      <h2>Welcome to my portfolio</h2>
+      <p>I am a <strong>data scientist</strong> and <strong>emerging artist from Galicia</strong>, with experience in:</p>
+      <ul>
+        <li>Artificial Intelligence applied to natural hazards, especially flood risk prediction.</li>
+        <li>Machine Learning for classification and predictive modeling.</li>
+        <li>Scientific outreach and AI training.</li>
+        <li>Music and artistic projects, music production, multi-instrumentalist, singer.</li>
+      </ul>
+    </div>
+
+    <!-- PROYECTOS -->
+    <div class="section" data-lang="es">
+      <h2>Proyectos</h2>
+      <ul>
+        <li><a href="https://github.com/ANFAIA/En-Peu">En Peu – IA para la predicción de inundaciones</a></li>
+        <li><a href="https://github.com/hugosuarezglez/SVM_RCC">Clasificación de subtipos de tumores renales con Machine Learning</a></li>
+      </ul>
+    </div>
+
+    <div class="section" data-lang="en" style="display:none;">
+      <h2>Projects</h2>
+      <ul>
+        <li><a href="https://github.com/ANFAIA/En-Peu">En Peu – AI for Flood Prediction</a></li>
+        <li><a href="https://github.com/hugosuarezglez/SVM_RCC">Kidney Tumor Subtype Classification with Machine Learning</a></li>
+      </ul>
+    </div>
+
+    <!-- ARTÍCULOS -->
+    <div class="section" data-lang="es">
+      <h2>Artículos</h2>
+      <p>Aquí publico reflexiones y divulgación sobre ciencia de datos, inteligencia artificial y música.</p>
+      <ul>
+        <li><a href="#">[2025-05] IA y resiliencia frente a inundaciones</a></li>
+        <li><a href="#">[2025-07] Aprendizaje automático aplicado a riesgos naturales</a></li>
+      </ul>
+    </div>
+
+    <div class="section" data-lang="en" style="display:none;">
+      <h2>Articles</h2>
+      <p>Here I share insights and outreach on data science, artificial intelligence and music.</p>
+      <ul>
+        <li><a href="#">[2025-05] AI and Resilience to Floods</a></li>
+        <li><a href="#">[2025-07] Machine Learning for Natural Hazards</a></li>
+      </ul>
+    </div>
+
+    <!-- POSTS -->
+    <div class="section" data-lang="es">
+      <h2>Posts</h2>
+      <div id="posts"><p>Cargando publicaciones...</p></div>
+    </div>
+    <div class="section" data-lang="en" style="display:none;">
+      <h2>Posts</h2>
+      <div id="posts"><p>Loading posts...</p></div>
+    </div>
+
+    <!-- CONTACTO -->
+    <div class="section" data-lang="es">
+      <h2>Contacto</h2>
+      <p>📧 <a href="mailto:albsgonz@hotmail.com">albsgonz@hotmail.com</a></p>
+      <p>🐙 <a href="https://github.com/hugosuarezglez">GitHub</a></p>
+      <p>💼 <a href="https://www.linkedin.com/in/hugo-su%C3%A1rez-gonz%C3%A1lez-341208130/">LinkedIn</a></p>
+    </div>
+    <div class="section" data-lang="en" style="display:none;">
+      <h2>Contact</h2>
+      <p>📧 <a href="mailto:albsgonz@hotmail.com">albsgonz@hotmail.com</a></p>
+      <p>🐙 <a href="https://github.com/hugosuarezglez">GitHub</a></p>
+      <p>💼 <a href="https://www.linkedin.com/in/hugo-su%C3%A1rez-gonz%C3%A1lez-341208130/">LinkedIn</a></p>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Hugo Suárez González</p>
+  </footer>
 </body>
 </html>
