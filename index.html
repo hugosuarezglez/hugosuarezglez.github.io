@@ -64,7 +64,7 @@
       <!-- Enlaces sociales -->
       <div class="mt-auto pt-8 flex flex-col items-center space-y-2 text-sm">
         <a href="https://github.com/hugosuarezglez" target="_blank" class="text-slate-600 dark:text-slate-400 hover:text-sky-600">GitHub</a>
-        <a href="https://www.linkedin.com/in/hugo-su%C3%A1rez-gonz%C3%A1lez-341208130/" target="_blank" class="text-slate-600 dark:text-slate-400 hover:text-sky-600">LinkedIn</a>
+        <a href="#" target="_blank" class="text-slate-600 dark:text-slate-400 hover:text-sky-600">LinkedIn</a>
         <a href="https://www.youtube.com/channel/UCXuUF7yy-JMzUpsWXKgVkxA" target="_blank" class="text-slate-600 dark:text-slate-400 hover:text-sky-600">YouTube</a>
       </div>
     </aside>
@@ -97,7 +97,7 @@
           <!-- Proyectos -->
           <div onclick="showSection('projects')" class="category-card cursor-pointer group">
             <div class="bg-white dark:bg-slate-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-              <img src="imgs/article.png" alt="Proyectos" class="w-full h-48 object-cover group-hover:opacity-90 transition-opacity">
+              <img src="imgs/proyectos.png" alt="Proyectos" class="w-full h-48 object-cover group-hover:opacity-90 transition-opacity">
               <div class="p-4 text-center">
                 <h3 class="text-lg font-semibold" data-en="Projects" data-es="Proyectos">Proyectos</h3>
               </div>
@@ -107,7 +107,7 @@
           <!-- Artículos -->
           <div onclick="showSection('articles')" class="category-card cursor-pointer group">
             <div class="bg-white dark:bg-slate-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-              <img src="imgs/posts.png" alt="Artículos" class="w-full h-48 object-cover group-hover:opacity-90 transition-opacity">
+              <img src="imgs/articles.png" alt="Artículos" class="w-full h-48 object-cover group-hover:opacity-90 transition-opacity">
               <div class="p-4 text-center">
                 <h3 class="text-lg font-semibold" data-en="Articles" data-es="Artículos">Artículos</h3>
               </div>
@@ -127,7 +127,7 @@
           <!-- Contacto -->
           <div onclick="showSection('contact')" class="category-card cursor-pointer group">
             <div class="bg-white dark:bg-slate-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-              <img src="imgs/contact.png" alt="Contacto" class="w-full h-48 object-cover group-hover:opacity-90 transition-opacity">
+              <img src="imgs/contacto.png" alt="Contacto" class="w-full h-48 object-cover group-hover:opacity-90 transition-opacity">
               <div class="p-4 text-center">
                 <h3 class="text-lg font-semibold" data-en="Contact" data-es="Contacto">Contacto</h3>
               </div>
@@ -188,13 +188,172 @@
           <h2 class="text-3xl font-bold">En Peu – <span data-en="AI for Flood Prediction" data-es="IA para Predicción de Inundaciones">IA para Predicción de Inundaciones</span></h2>
         </div>
         
-        <!-- Aquí puedes incluir el contenido detallado del proyecto En Peu -->
-        <div class="max-w-4xl prose prose-slate dark:prose-invert">
-          <p data-en="Detailed information about the En Peu project..." data-es="Información detallada sobre el proyecto En Peu...">
-            Información detallada sobre el proyecto En Peu...
-          </p>
+        <!-- Hero del proyecto -->
+        <div class="max-w-6xl mb-16 grid lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <p class="text-lg text-slate-600 dark:text-slate-300 mb-6" 
+               data-en="Personal portfolio of the AI project for flood height prediction (PLA) in urban and peri-urban environments. Documents from my beginnings at Fundación MAtriX to the ANFAIA scholarship."
+               data-es="Portfolio personal del proyecto de IA para predicción de cota de inundación (PLA) en entornos urbanos y periurbanos. Documenta desde mis inicios en la Fundación MAtriX hasta la beca ANFAIA.">
+               Portfolio personal del proyecto de IA para predicción de cota de inundación (PLA) en entornos urbanos y periurbanos. Documenta desde mis inicios en la Fundación MAtriX hasta la beca ANFAIA.
+            </p>
+            <div class="flex flex-wrap gap-3 mb-6">
+              <a href="#enpeu-resultados" onclick="scrollToEnPeuSection('enpeu-resultados')" class="inline-flex h-11 items-center rounded-xl bg-sky-600 text-white px-4 text-sm font-semibold shadow hover:bg-sky-700">
+                <span data-en="View Results" data-es="Ver resultados">Ver resultados</span>
+              </a>
+              <a href="https://github.com/ANFAIA/En-Peu" target="_blank" class="inline-flex h-11 items-center rounded-xl border border-slate-300 dark:border-slate-700 px-4 text-sm font-semibold hover:bg-slate-100 dark:hover:bg-slate-800">
+                <span data-en="Resources & docs" data-es="Recursos & docs">Recursos & docs</span>
+              </a>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-slate-700">@hugosuarezglez</span>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-sky-50 to-slate-50 dark:from-sky-900/10 dark:to-slate-900/10 p-6 shadow-inner">
+              <ul class="grid grid-cols-2 gap-3 text-sm">
+                <li class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                  <p class="font-semibold" data-en="Best Model" data-es="Mejor modelo">Mejor modelo</p>
+                  <p class="text-slate-600 dark:text-slate-300">Random Forest</p>
+                </li>
+                <li class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                  <p class="font-semibold" data-en="Libraries" data-es="Librerías">Librerías</p>
+                  <p class="text-slate-600 dark:text-slate-300">scikit‑learn, XGBoost, SciPy</p>
+                </li>
+                <li class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                  <p class="font-semibold">EDA</p>
+                  <p class="text-slate-600 dark:text-slate-300">Boxplots, histos, outliers</p>
+                </li>
+                <li class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                  <p class="font-semibold" data-en="Explainability" data-es="Explicabilidad">Explicabilidad</p>
+                  <p class="text-slate-600 dark:text-slate-300">PDPs · Importancias</p>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-      </section>
+
+        <!-- Acerca del proyecto -->
+        <div class="max-w-4xl mb-12 bg-white dark:bg-slate-800 rounded-lg shadow-sm p-8">
+          <h3 class="text-2xl font-semibold mb-4" data-en="About the Project" data-es="Acerca del proyecto">Acerca del proyecto</h3>
+          <div class="prose prose-slate dark:prose-invert max-w-none">
+            <p data-en="En Peu is a data science initiative applied to flood risk management. The objective is to predict flood water level (PLA) from geospatial and urban variables, generate interpretable maps and offer a reproducible tool for municipalities and citizens."
+               data-es="En Peu es una iniciativa de ciencia de datos aplicada a la gestión del riesgo de inundaciones. El objetivo es predecir la cota de lámina de agua (PLA) a partir de variables geoespaciales y urbanas, generar mapas interpretables y ofrecer una herramienta reproducible para ayuntamientos y ciudadanía.">
+               <strong>En Peu</strong> es una iniciativa de ciencia de datos aplicada a la gestión del riesgo de inundaciones. El objetivo es <em>predecir la cota de lámina de agua (PLA)</em> a partir de variables geoespaciales y urbanas, generar mapas interpretables y ofrecer una herramienta reproducible para ayuntamientos y ciudadanía.
+            </p>
+            <p data-en="This portfolio gathers repository documentation, notebooks, scripts, outreach articles and technical notes from my beginnings at Fundación MAtriX to the ANFAIA scholarship, going through research on classical models (RF/GBM/SVM) and more advanced proposals like AlphaEarth embeddings and an HRM-style orchestrator."
+               data-es="Este portfolio recoge la documentación del repositorio, cuadernos, scripts, artículos divulgativos y notas técnicas desde mis inicios en la Fundación MAtriX hasta la beca ANFAIA, pasando por la investigación de modelos clásicos (RF/GBM/SVM) y propuestas más avanzadas como embeddings de AlphaEarth y un orquestador de tipo HRM‑style.">
+               Este portfolio recoge la documentación del repositorio, cuadernos, scripts, artículos divulgativos y notas técnicas desde mis inicios en la <strong>Fundación MAtriX</strong> hasta la <strong>beca ANFAIA</strong>, pasando por la investigación de modelos clásicos (RF/GBM/SVM) y propuestas más avanzadas como embeddings de <em>AlphaEarth</em> y un orquestador de tipo <em>HRM‑style</em>.
+            </p>
+          </div>
+        </div>
+
+        <!-- Variables y datos -->
+        <div class="mb-12">
+          <div class="mb-8">
+            <h3 class="text-2xl font-semibold mb-2" data-en="Data & Variables" data-es="Datos & variables">Datos & variables</h3>
+            <p class="text-slate-600 dark:text-slate-300" data-en="Variables present in the CSV files and their meaning." data-es="Variables presentes en los CSV y su significado.">Variables presentes en los CSV y su significado.</p>
+          </div>
+          <div class="grid md:grid-cols-2 gap-6 max-w-6xl">
+            <div class="space-y-3 text-sm leading-6">
+              <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <p><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-slate-700">A</span> <strong data-en="Altitude" data-es="Altitud">Altitud</strong>. <span data-en="Numeric: elevation above sea level." data-es="Numérica: elevación s.n.m.">Numérica: elevación s.n.m.</span></p>
+              </div>
+              <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <p><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-slate-700">AC</span> <strong data-en="Street Width" data-es="Anchura de calles">Anchura de calles</strong>. <span data-en="Categorical → numeric by mean value of range." data-es="Categórica → numérica por valor medio del rango.">Categórica → numérica por valor medio del rango.</span></p>
+              </div>
+              <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <p><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-slate-700">B</span> <strong data-en="Ravine" data-es="Barranco">Barranco</strong>. <span data-en="Binary: 0 = channel, 1 = no channel." data-es="Binaria: 0 = cauce, 1 = no cauce.">Binaria: 0 = cauce, 1 = no cauce.</span></p>
+              </div>
+              <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <p><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-slate-700">CICCB</span> <span data-en="Channel curvature · accumulation capacity. Numeric." data-es="Curvatura del cauce · capacidad de acumulación. Numérica.">Curvatura del cauce · capacidad de acumulación. Numérica.</span></p>
+              </div>
+              <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <p><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-slate-700">CIB</span> <span data-en="Ravine flood capacity by section/situation. Numeric." data-es="Capacidad de inundación del barranco por sección/situación. Numérica.">Capacidad de inundación del barranco por sección/situación. Numérica.</span></p>
+              </div>
+            </div>
+            <div class="space-y-3 text-sm leading-6">
+              <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <p><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-slate-700">CUS</span> <strong data-en="Land Use" data-es="Uso del suelo">Uso del suelo</strong>. <span data-en="Categorical: 1 Crops · 2 Buildings · 3 Bare soil · 4 Green areas · 5 Road." data-es="Categórica: 1 Cultivos · 2 Edificios · 3 Suelo desnudo · 4 Zonas verdes · 5 Vial.">Categórica: 1 Cultivos · 2 Edificios · 3 Suelo desnudo · 4 Zonas verdes · 5 Vial.</span></p>
+              </div>
+              <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <p><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-slate-700">DBB</span> <span data-en="Distance to channel edge (m). Numeric." data-es="Distancia al borde del cauce (m). Numérica.">Distancia al borde del cauce (m). Numérica.</span></p>
+              </div>
+              <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <p><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-slate-700">DOB</span> <span data-en="Distance to channel obstacles (m). Numeric." data-es="Distancia a obstáculos en el cauce (m). Numérica.">Distancia a obstáculos en el cauce (m). Numérica.</span></p>
+              </div>
+              <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <p><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-slate-700">OC</span> <strong data-en="Street Orientation" data-es="Orientación calles">Orientación calles</strong>. <span data-en="Categorical: 1 Oblique · 2 Parallel · 3 Perpendicular · 4 Others." data-es="Categórica: 1 Oblicua · 2 Paralela · 3 Perpendicular · 4 Otras.">Categórica: 1 Oblicua · 2 Paralela · 3 Perpendicular · 4 Otras.</span></p>
+              </div>
+              <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <p><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-slate-700">P</span> <strong data-en="Slope" data-es="Pendiente">Pendiente</strong> (%). <span data-en="Numeric." data-es="Numérica.">Numérica.</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metodología -->
+        <div class="mb-12 max-w-6xl grid lg:grid-cols-2 gap-10 items-start">
+          <div class="prose prose-slate dark:prose-invert max-w-none">
+            <h3 class="text-2xl font-semibold" data-en="Methodology and Workflow" data-es="Metodología y flujo de trabajo">Metodología y flujo de trabajo</h3>
+            <ol>
+              <li><strong data-en="Ingestion and cleaning" data-es="Ingesta y limpieza">Ingesta y limpieza</strong>: <span data-en="CSV combination, missing data control, outlier cleanup." data-es="combinación de CSV, control de faltantes, depuración de outliers.">combinación de CSV, control de faltantes, depuración de outliers.</span></li>
+              <li><strong>EDA</strong>: <span data-en="histograms and boxplots; correlation matrix for numeric variables; Cramér's V (cat↔cat) and Kruskal‑Wallis (cat↔num) without assuming normality." data-es="histogramas y boxplots; matriz de correlación para numéricas; Cramér's V (cat↔cat) y Kruskal‑Wallis (cat↔num) sin asumir normalidad.">histogramas y boxplots; matriz de correlación para numéricas; <em>Cramér's V</em> (cat↔cat) y <em>Kruskal‑Wallis</em> (cat↔num) sin asumir normalidad.</span></li>
+              <li><strong data-en="Transformations" data-es="Transformaciones">Transformaciones</strong>: <code>MinMaxScaler</code> <span data-en="for numeric and" data-es="para numéricas y">para numéricas y</span> <code>OneHotEncoder</code> <span data-en="for categorical." data-es="para categóricas.">para categóricas.</span></li>
+              <li><strong data-en="Partition" data-es="Partición">Partición</strong>: <code>train/test</code> con <code>scikit‑learn</code>.</li>
+              <li><strong data-en="Modeling" data-es="Modelado">Modelado</strong>: <em>Random Forest</em>, <em>Gradient Boosting</em>, <em>SVM</em> <span data-en="and tests with" data-es="y pruebas con">y pruebas con</span> <em>XGBoost</em>. <span data-en="Hyperparameter search." data-es="Búsqueda de hiperparámetros.">Búsqueda de hiperparámetros.</span></li>
+              <li><strong data-en="Evaluation" data-es="Evaluación">Evaluación</strong>: <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-slate-700">R²</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-slate-700">RMSE</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-slate-700">MAE</span>. <span data-en="Comparative plots and observed vs predicted scatter." data-es="Gráficos comparativos y dispersión observado vs predicho.">Gráficos comparativos y dispersión observado vs predicho.</span></li>
+              <li><strong data-en="Maps" data-es="Mapas">Mapas</strong>: <span data-en="Observed vs predicted PLA and absolute error map. Altitude imputation in channels with" data-es="PLA observada vs predicha y mapa de error absoluto. Imputación de altitud en cauces con">PLA observada vs predicha y mapa de error absoluto. Imputación de altitud en cauces con</span> <code>KDTree</code> (SciPy).</li>
+              <li><strong data-en="Explainability" data-es="Explicabilidad">Explicabilidad</strong>: <em>Partial Dependence Plots (PDPs)</em> <span data-en="for key numeric variables; variable importance." data-es="para variables numéricas clave; importancias de variables.">para variables numéricas clave; importancias de variables.</span></li>
+              <li><strong data-en="Spatial dimension" data-es="Dimensión espacial">Dimensión espacial</strong> <span data-en="(under exploration): spatial cross-validation, XY coordinates, neighbor averages, flows." data-es="(en exploración): validación cruzada espacial, coordenadas XY, promedios de vecinos, flujos.">(en exploración): validación cruzada espacial, coordenadas XY, promedios de vecinos, flujos.</span></li>
+            </ol>
+          </div>
+          <div class="space-y-4">
+            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <p class="font-semibold mb-2" data-en="Integrated Conversations" data-es="Conversaciones integradas">Conversaciones integradas</p>
+              <ul class="text-sm leading-6 list-disc pl-5">
+                <li><em data-en="Read and combine CSV" data-es="Leer y combinar CSV">Leer y combinar CSV</em>: <span data-en="union and validation pipeline." data-es="pipeline de unión y validación.">pipeline de unión y validación.</span></li>
+                <li><em>AlphaEarth — <span data-en="simple explanation" data-es="explicación sencilla">explicación sencilla</span></em>: <span data-en="use of satellite embeddings (64D) to enrich the model." data-es="uso de embeddings satelitales (64D) para enriquecer el modelo.">uso de embeddings satelitales (64D) para enriquecer el modelo.</span></li>
+                <li><em data-en="Hierarchical reasoning model" data-es="Modelo de razonamiento jerárquico">Modelo de razonamiento jerárquico</em>: <span data-en="HRM‑style orchestration (LLM planner + Python executors)." data-es="orquestación HRM‑style (planificador LLM + ejecutores Python).">orquestación HRM‑style (planificador LLM + ejecutores Python).</span></li>
+                <li><em data-en="LinkedIn message — ANFAIA Scholarship" data-es="Mensaje LinkedIn — Beca ANFAIA">Mensaje LinkedIn — Beca ANFAIA</em>: <span data-en="personal milestones and social impact." data-es="hitos personales e impacto social.">hitos personales e impacto social.</span></li>
+                <li><em data-en="Flood prediction models" data-es="Modelos predictivos inundación">Modelos predictivos inundación</em>: RF/GBM/SVM, <span data-en="metrics, maps." data-es="métricas, mapas.">métricas, mapas.</span></li>
+                <li><em data-en="AI floods summary" data-es="Resumen IA inundaciones">Resumen IA inundaciones</em>: <span data-en="outreach vision for press." data-es="visión divulgativa para prensa.">visión divulgativa para prensa.</span></li>
+              </ul>
+            </div>
+            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <p class="font-semibold mb-2" data-en="Tech Stack" data-es="Stack técnico">Stack técnico</p>
+              <p class="text-sm">Python, R, scikit‑learn, XGBoost, SciPy, NumPy, pandas, Matplotlib; GIS; Colab; Git/GitHub; VS Code.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Resultados -->
+        <div id="enpeu-resultados" class="mb-12">
+          <h3 class="text-2xl font-semibold mb-4" data-en="Results" data-es="Resultados">Resultados</h3>
+          <p class="mt-2 text-slate-600 dark:text-slate-300 mb-6" data-en="Model comparison and key visualizations. Replace example values with real ones from the repository." data-es="Comparativa de modelos y visualizaciones clave. Sustituye los valores de ejemplo por los reales del repositorio.">Comparativa de modelos y visualizaciones clave. Sustituye los valores de ejemplo por los reales del repositorio.</p>
+          <div class="grid lg:grid-cols-3 gap-6">
+            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <p class="font-semibold" data-en="Metrics (example)" data-es="Métricas (ejemplo)">Métricas (ejemplo)</p>
+              <ul class="text-sm mt-2 space-y-1">
+                <li>Random Forest — R²: <strong>0.82</strong> · RMSE: <strong>0.18</strong> · MAE: <strong>0.12</strong></li>
+                <li>GBM — R²: 0.79 · RMSE: 0.20 · MAE: 0.14</li>
+                <li>SVM — R²: 0.74 · RMSE: 0.23 · MAE: 0.17</li>
+              </ul>
+              <p class="text-xs text-slate-500 mt-2" data-en="*Replace with real figures from the latest 06-*.ipynb." data-es="*Reemplazar por cifras reales del último 06-*.ipynb.">*Reemplazar por cifras reales del último <code>06-*.ipynb</code>.</p>
+            </div>
+            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <p class="font-semibold" data-en="Charts" data-es="Gráficas">Gráficas</p>
+              <ul class="text-sm mt-2 list-disc pl-5">
+                <li data-en="Scatter: predicted vs observed" data-es="Dispersión: predicho vs observado">Dispersión: predicho vs observado</li>
+                <li data-en="Comparative R² / RMSE / MAE" data-es="Comparativa R² / RMSE / MAE">Comparativa R² / RMSE / MAE</li>
+                <li data-en="PDPs of key variables" data-es="PDPs de variables clave">PDPs de variables clave</li>
+              </ul>
+            </div>
+            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <p class="font-semibold" data-en="Maps" data-es="Mapas">Mapas</p>
+              <ul class="text-sm mt-2 list-disc pl-5">
+                <li data-en="Observed vs predicted PLA (test)" data-es="PLA observada vs predicha (test)">PLA observada vs predicha (test)</li>
+                <li data-en="Absolute error map" data-es="Mapa de error absoluto">Mapa de error absoluto</li>
+                <li data-en="Channel altitude gradient (KDTree)" data-es="Gradiente de altitud en cauce (KDTree)">Gradiente de altitud en cauce (KDTree)</li>
+              </ul>
+            </div>
 
       <!-- Artículos -->
       <section id="articles" class="section section-hidden">
