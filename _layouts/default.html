@@ -1,113 +1,18 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
   <title>{{ page.title | default: site.title }}</title>
-
-  <!-- ====== Apply theme as early as possible to avoid flash ====== -->
-  <script>
-    (function(){
-      try {
-        var theme = localStorage.getItem('theme');
-        if (theme === 'dark') document.documentElement.classList.add('dark');
-        else if (theme === 'light') document.documentElement.classList.remove('dark');
-        else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          document.documentElement.classList.add('dark');
-        }
-      } catch(e){}
-    })();
-  </script>
-
-  <!-- Tailwind (CDN) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <style>
-    /* Simple readable typography and spacing (like tdhopper) */
-    :root{
-      --bg: #ffffff;
-      --fg: #111827;
-      --muted: #6b7280;
-    }
-    .dark :root{ --bg: #0b1220; --fg: #e6eef8; --muted: #9ca3af; }
-
-    body{
-      background: var(--bg);
-      color: var(--fg);
-      font-family: "Helvetica Neue", Helvetica, Arial, system-ui, -apple-system;
-      line-height: 1.6;
-    }
-
-    main { max-width: 880px; margin: 0 auto; padding: 40px 22px; }
-
-    .prose p { margin-bottom: 1.1rem; }
-    .prose h1, .prose h2, .prose h3 { margin-top: 1.2rem; margin-bottom: .6rem; }
-    .site-header { border-bottom: 1px solid rgba(0,0,0,0.06); padding: 20px 0; }
-    .dark .site-header { border-color: rgba(255,255,255,0.06); }
-
-    /* small helper for language buttons */
-    .btn { padding: .35rem .6rem; border-radius: .375rem; background: transparent; border: 1px solid rgba(0,0,0,0.08); }
-    .dark .btn { border-color: rgba(255,255,255,0.08); }
-  </style>
-
+  <link rel="stylesheet" href="/assets/style.css">
+  {% seo %}
 </head>
-<body class="antialiased">
-  <header class="site-header">
-    <main class="mx-auto max-w-4xl px-4 flex items-center justify-between">
-      <div>
-        <a href="{{ '/' | relative_url }}" class="text-lg font-semibold">Hugo Suárez González</a>
-        <div class="text-sm text-gray-500 dark:text-gray-400">Data Scientist & Artist</div>
-      </div>
-
-      <nav class="flex items-center gap-3 text-sm">
-        <a class="text-sm" href="{{ '/' | relative_url }}">Home</a>
-        <a class="text-sm" href="{{ '/categories.html' | relative_url }}">Categories</a>
-        <a class="text-sm" href="{{ '/posts.html' | relative_url }}">Posts</a>
-        <a class="text-sm" href="{{ '/resume.html' | relative_url }}">Resume</a>
-        <a class="text-sm" href="{{ '/contact.html' | relative_url }}">Contact</a>
-
-        <!-- Theme toggle -->
-        <button id="theme-toggle" aria-label="Toggle theme" class="btn" onclick="toggleTheme()">🌓</button>
-
-        <!-- Language toggle -->
-        <button id="lang-en" class="btn" onclick="setLang('en')">EN</button>
-        <button id="lang-es" class="btn" onclick="setLang('es')">ES</button>
-      </nav>
-    </main>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100">
+  <header>
+    {% include header.html %}
   </header>
 
-  <main>
+  <main class="max-w-4xl mx-auto px-4 py-8">
     {{ content }}
   </main>
-
-  <footer class="mx-auto max-w-4xl px-4 py-8 text-sm text-gray-500 dark:text-gray-400">
-    © {{ "now" | date: "%Y" }} Hugo Suárez González — Built with Jekyll
-  </footer>
-
-  <!-- ====== Scripts: theme & language (loaded at end) ====== -->
-  <script>
-    // Theme toggle (persist)
-    function toggleTheme(){
-      var isDark = document.documentElement.classList.toggle('dark');
-      try { localStorage.setItem('theme', isDark ? 'dark' : 'light'); } catch(e){}
-    }
-
-    // Language functions: store lang and apply by showing [data-lang] blocks
-    function setLang(lang){
-      try{ localStorage.setItem('lang', lang); }catch(e){}
-      applyLang(lang);
-    }
-    function applyLang(lang){
-      // show elements with data-lang attribute matching lang, hide others
-      document.querySelectorAll('[data-lang]').forEach(function(el){
-        el.style.display = (el.getAttribute('data-lang') === lang) ? '' : 'none';
-      });
-    }
-    // On load apply saved lang (default es)
-    (function(){
-      var lang = (function(){ try { return localStorage.getItem('lang') || 'es'; } catch(e){ return 'es'; }})();
-      applyLang(lang);
-    })();
-  </script>
 </body>
 </html>
