@@ -6,45 +6,103 @@
   <title>Posts – Hugo Suárez González</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js"></script>
+  <style>
+    .hidden { display: none; }
+  </style>
 </head>
-<body class="bg-white text-black dark:bg-gray-900 dark:text-gray-100">
+<body class="bg-white text-black dark:bg-gray-900 dark:text-gray-100 transition-colors">
 
-  <div class="flex max-w-5xl mx-auto">
-    <aside class="w-1/4 p-6 flex flex-col items-center border-r border-gray-200 dark:border-gray-700">
-      <img src="img/profile.jpg" class="w-32 h-32 rounded-full mb-4">
-      <h1 class="text-xl font-bold">Hugo Suárez González</h1>
-      <nav class="flex flex-col space-y-2 text-sm">
-        <a href="index.html">Home</a>
-        <a href="categories.html">Categories</a>
-        <a href="posts.html" class="font-bold">Posts</a>
-        <a href="resume.html">Resume</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </aside>
+<div class="flex max-w-5xl mx-auto">
 
-    <main class="w-3/4 p-10 space-y-10">
-      <h2 class="text-2xl font-semibold">Posts</h2>
-      <div id="posts-container" class="space-y-8"></div>
-    </main>
-  </div>
+  <!-- Sidebar -->
+  <aside class="w-1/4 p-6 flex flex-col items-center border-r border-gray-200 dark:border-gray-700">
+    <img src="imgs/perfil.jpg" class="w-32 h-32 rounded-full mb-4">
+    <h1 class="text-xl font-bold">Hugo Suárez González</h1>
+    <p class="text-gray-500 dark:text-gray-400 text-sm mb-6">Data Scientist & Artist</p>
 
-  <script>
-    const posts = ["posts/2025-08-01-first.md", "posts/2025-08-10-second.md"];
+    <!-- Dark Mode Toggle -->
+    <button onclick="toggleDarkMode()" class="px-3 py-1 border rounded text-sm mb-6">🌙 / ☀️</button>
 
-    const converter = new showdown.Converter();
-    const container = document.getElementById("posts-container");
+    <!-- Menu -->
+    <nav class="flex flex-col space-y-2 text-sm">
+      <a href="index.html">Home</a>
+      <a href="categories.html">Categories</a>
+      <a href="posts.html" class="font-bold">Posts</a>
+      <a href="resume.html">Resume</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </aside>
 
-    posts.forEach(url => {
-      fetch(url)
-        .then(res => res.text())
-        .then(md => {
-          const html = converter.makeHtml(md);
-          const div = document.createElement("div");
-          div.className = "prose dark:prose-invert border-b pb-6";
-          div.innerHTML = html;
-          container.appendChild(div);
-        });
+  <!-- Main content -->
+  <main class="w-3/4 p-10 space-y-10">
+    <h2 class="text-2xl font-semibold">Posts</h2>
+    <div id="posts-container" class="space-y-8"></div>
+  </main>
+
+</div>
+
+<script>
+  // ===== Dark Mode Persistente =====
+  function toggleDarkMode() {
+    const html = document.documentElement;
+    html.classList.toggle('dark');
+    if (html.classList.contains('dark')) localStorage.setItem('theme', 'dark');
+    else localStorage.setItem('theme', 'light');
+  }
+
+  (function() {
+    if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+    else document.documentElement.classList.remove('dark');
+  })();
+
+  // ===== Posts dinámicos desde Markdown =====
+  const postsFolder = "posts/";
+  const postsList = [
+    "2025-08-28-alphaearth-flood.md"
+    // Aquí puedes añadir más posts manualmente o crear un script para listarlos
+  ];
+
+  const container = document.getElementById("posts-container");
+  const converter = new showdown.Converter();
+
+  // Función para extraer frontmatter (solo date por ahora)
+  function parseFrontmatter(mdText) {
+    const match = mdText.match(/---\s*([\s\S]*?)\s*---/);
+    if (!match) return {};
+    const lines = match[1].split("\n");
+    const obj = {};
+    lines.forEach(line => {
+      const [key, ...rest] = line.split(":");
+      if (key && rest) obj[key.trim()] = rest.join(":").trim();
     });
-  </script>
+    return obj;
+  }
+
+  async function loadPosts() {
+    const postsData = [];
+
+    for (const file of postsList) {
+      const res = await fetch(postsFolder + file);
+      const md = await res.text();
+      const fm = parseFrontmatter(md);
+      postsData.push({ file, md, date: fm.date || "1900-01-01" });
+    }
+
+    // Ordenar por fecha descendente
+    postsData.sort((a,b) => new Date(b.date) - new Date(a.date));
+
+    // Renderizar
+    postsData.forEach(post => {
+      const html = converter.makeHtml(post.md);
+      const div = document.createElement("div");
+      div.className = "prose dark:prose-invert border-b pb-6";
+      div.innerHTML = html;
+      container.appendChild(div);
+    });
+  }
+
+  loadPosts();
+</script>
+
 </body>
 </html>
